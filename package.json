@@ -1,0 +1,36 @@
+{
+  "name": "nyt_archive_browser",
+  "version": "1.0.0",
+  "description": "Browse archived NYT articles by month.",
+  "engines": {
+    "node": "7.8.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "concurrently \"node index.js\" \"npm run copy-normalize\" \"npm run build-css-dev\" \"npm run watch-copy-js\"",
+    "build-production": "concurrently \"npm run build-css-prod\" \"npm run build-js \" \"npm run copy-assets\"",
+    "log": "node -e \"console.log(process.cwd())\"",
+    "build-css-dev": "node-sass --watch --output-style='expanded' --source-map-embed --source-map-root='file://pwd' --include-path sass/partials sass/*.sass static/css/main.css",
+    "build-css-prod": "rimraf static/css/**/* && node-sass --output-style='compressed' --include-path sass/partials sass/*.sass static/css/main.css",
+    "copy-assets": "copy assets/* static/",
+    "copy-normalize": "copy ./node_modules/normalize.css/normalize.css static/vendor",
+    "copy-js": "copy js/**/* static/js",
+    "watch-copy-js": "watch 'npm run copy-js' js"
+  },
+  "author": "Tobias Weiß",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.14.0",
+    "normalize.css": "^6.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.4.0",
+    "copy": "^0.3.0",
+    "eslint": "^3.19.0",
+    "node-sass": "^4.5.0",
+    "rimraf": "^2.5.4",
+    "watch": "^1.0.2"
+  }
+}
