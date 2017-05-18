@@ -29,6 +29,7 @@
       "__dirname": true,
       "require": true,
       "exports": true,
-      "process": true
+      "process": true,
+      "module": true
     }
 }
