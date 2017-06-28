@@ -1,6 +1,5 @@
 var https = require('https');
-var config = require('./config.js');
-var api_key = config().NYT_ARCHIVE_API_KEY ? config().NYT_ARCHIVE_API_KEY : ( process.env.NYT_ARCHIVE_API_KEY ? process.env.NYT_ARCHIVE_API_KEY : 'No api key provided');
+var api_key = process.env.NYT_ARCHIVE_API_KEY ? process.env.NYT_ARCHIVE_API_KEY : 'No api key provided';
 var options = {
     hostname: 'api.nytimes.com',
     port: 443,
