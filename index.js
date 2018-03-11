@@ -1,15 +1,14 @@
 require('dotenv').config();
-
-var express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var api = require('./nyt_archive_api.js');
-
-app.set('port', (process.env.PORT || 3000));
+const express = require('express');
+const http = require('http');
+const fs = require('fs');
+const app = express();
+const bodyParser = require('body-parser');
+const { callApi } = require('./api/callApi.js');
+const port = process.env.PORT || 3000;
+const debug = process.env.ENVIRONMENT === 'development';
 
 app.use(express.static(__dirname + '/static'));
-
-app.listen(app.get('port'));
 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -17,8 +16,24 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-app.post('/', function (req, res) {
-    api.get_request(req, function(result, status_code){
+app.post('/', (req, res) => {
+    callApi(req, (result, status_code) => {
         res.status(status_code).send(result);
     });
 });
+
+http.createServer(app).listen(port);
+
+if (debug) {
+    // serve mock data only in dev env
+    const https = require('https');
+    const privateKey  = fs.readFileSync(process.env.SSLKEY, 'utf8');
+    const certificate = fs.readFileSync(process.env.SSLCERT, 'utf8');
+    const credentials = {key: privateKey, cert: certificate};
+
+    app.use(express.static(__dirname + '/test'));
+    https.createServer(credentials, app).listen(8443);
+
+    // eslint-disable-next-line no-console
+    console.log(`App listening on http://localhost:${port} and https://localhost:8443`);
+}

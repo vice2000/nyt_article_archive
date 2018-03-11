@@ -1,0 +1,640 @@
+{
+    "copyright":"Copyright (c) 2013 The New York Times Company.  All Rights Reserved.",
+    "response":{
+       "meta":{
+          "hits":6699
+       },
+       "docs":[
+          {
+             "web_url":"https://www.nytimes.com/interactive/2016/04/01/books/review/28sketchbook-yang.html",
+             "snippet":"Books as a window into other people’s lives....",
+             "lead_paragraph":"Books as a window into other people’s lives.",
+             "abstract":null,
+             "print_page":null,
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/08/28/books/review/28sketchbook-promo/28sketchbook-promo-thumbWide.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/08/28/books/review/28sketchbook-promo/28sketchbook-promo-thumbWide.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":600,
+                   "url":"images/2016/08/28/books/review/28sketchbook-promo/28sketchbook-promo-articleLarge.jpg",
+                   "height":328,
+                   "subtype":"xlarge",
+                   "legacy":{
+                      "xlargewidth":"600",
+                      "xlarge":"images/2016/08/28/books/review/28sketchbook-promo/28sketchbook-promo-articleLarge.jpg",
+                      "xlargeheight":"328"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":75,
+                   "url":"images/2016/08/28/books/review/28sketchbook-promo/28sketchbook-promo-thumbStandard.jpg",
+                   "height":75,
+                   "subtype":"thumbnail",
+                   "legacy":{
+                      "thumbnailheight":"75",
+                      "thumbnail":"images/2016/08/28/books/review/28sketchbook-promo/28sketchbook-promo-thumbStandard.jpg",
+                      "thumbnailwidth":"75"
+                   },
+                   "type":"image"
+                }
+             ],
+             "headline":{
+                "seo":"Glare of Disdain",
+                "main":"Glare of Disdain",
+                "kicker":"Sketchbook | Gene Luen Yang"
+             },
+             "keywords":[
+                {
+                   "rank":"1",
+                   "is_major":"N",
+                   "name":"subject",
+                   "value":"Books and Literature"
+                }
+             ],
+             "pub_date":"2016-04-01T04:00:00Z",
+             "document_type":"multimedia",
+             "news_desk":"Books / Book Review",
+             "section_name":"Books",
+             "subsection_name":"Book Review",
+             "byline":[
+ 
+             ],
+             "type_of_material":"Interactive Feature",
+             "_id":"57bc17a395d0e021d798215e",
+             "word_count":null,
+             "slideshow_credits":null
+          },
+          {
+             "web_url":"https://www.nytimes.com/2016/04/04/t-magazine/fashion/anthony-vaccarello-saint-laurent-what-to-know.html",
+             "snippet":"The house announced today that the Belgian designer would succeed Hedi Slimane....",
+             "lead_paragraph":"The house announced today that the Belgian designer would succeed Hedi Slimane.",
+             "abstract":null,
+             "print_page":null,
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/04/01/t-magazine/01tmag-vacc-slide-3KKO/01tmag-vacc-slide-3KKO-thumbWide-v2.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/04/01/t-magazine/01tmag-vacc-slide-3KKO/01tmag-vacc-slide-3KKO-thumbWide-v2.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":600,
+                   "url":"images/2016/04/01/t-magazine/01tmag-vacc-slide-3KKO/01tmag-vacc-slide-3KKO-articleLarge.jpg",
+                   "height":901,
+                   "subtype":"xlarge",
+                   "legacy":{
+                      "xlargewidth":"600",
+                      "xlarge":"images/2016/04/01/t-magazine/01tmag-vacc-slide-3KKO/01tmag-vacc-slide-3KKO-articleLarge.jpg",
+                      "xlargeheight":"901"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":75,
+                   "url":"images/2016/04/01/t-magazine/01tmag-vacc-slide-3KKO/01tmag-vacc-slide-3KKO-thumbStandard-v2.jpg",
+                   "height":75,
+                   "subtype":"thumbnail",
+                   "legacy":{
+                      "thumbnailheight":"75",
+                      "thumbnail":"images/2016/04/01/t-magazine/01tmag-vacc-slide-3KKO/01tmag-vacc-slide-3KKO-thumbStandard-v2.jpg",
+                      "thumbnailwidth":"75"
+                   },
+                   "type":"image"
+                }
+             ],
+             "headline":{
+                "main":"What to Know About Saint Laurent’s New Creative Director, Anthony Vaccarello",
+                "print_headline":"Anthony Vaccarello at Saint Laurent: What to Know"
+             },
+             "keywords":[
+                {
+                   "rank":"1",
+                   "is_major":"N",
+                   "name":"subject",
+                   "value":"Fashion and Apparel"
+                },
+                {
+                   "rank":"2",
+                   "is_major":"N",
+                   "name":"subject",
+                   "value":"Appointments and Executive Changes"
+                },
+                {
+                   "rank":"3",
+                   "is_major":"N",
+                   "name":"organizations",
+                   "value":"Yves Saint Laurent"
+                },
+                {
+                   "rank":"4",
+                   "is_major":"N",
+                   "name":"persons",
+                   "value":"Vaccarello, Anthony"
+                }
+             ],
+             "pub_date":"2016-04-01T00:00:00Z",
+             "document_type":"article",
+             "news_desk":"TStyle",
+             "section_name":"T Magazine",
+             "subsection_name":"Fashion & Beauty",
+             "byline":{
+                "person":[
+                   {
+                      "organization":"",
+                      "role":"reported",
+                      "firstname":"Hilary",
+                      "rank":1,
+                      "lastname":"MOSS"
+                   }
+                ],
+                "original":"By HILARY MOSS"
+             },
+             "type_of_material":"News",
+             "_id":"5702955938f0d828b0bfac20",
+             "word_count":"484",
+             "slideshow_credits":null
+          },
+          {
+             "web_url":"https://www.nytimes.com/slideshow/2016/04/01/nytnow/your-weekend-briefing.html",
+             "snippet":"Here’s what you need to know about the week’s top stories....",
+             "lead_paragraph":"Here’s what you need to know about the week’s top stories.",
+             "abstract":null,
+             "print_page":null,
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/04/01/nytnow/03weekendss-slide-0D8F/03weekendss-slide-0D8F-thumbWide.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/04/01/nytnow/03weekendss-slide-0D8F/03weekendss-slide-0D8F-thumbWide.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":600,
+                   "url":"images/2016/04/01/nytnow/03weekendss-slide-0D8F/03weekendss-slide-0D8F-articleLarge.jpg",
+                   "height":400,
+                   "subtype":"xlarge",
+                   "legacy":{
+                      "xlargewidth":"600",
+                      "xlarge":"images/2016/04/01/nytnow/03weekendss-slide-0D8F/03weekendss-slide-0D8F-articleLarge.jpg",
+                      "xlargeheight":"400"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":75,
+                   "url":"images/2016/04/01/nytnow/03weekendss-slide-0D8F/03weekendss-slide-0D8F-thumbStandard.jpg",
+                   "height":75,
+                   "subtype":"thumbnail",
+                   "legacy":{
+                      "thumbnailheight":"75",
+                      "thumbnail":"images/2016/04/01/nytnow/03weekendss-slide-0D8F/03weekendss-slide-0D8F-thumbStandard.jpg",
+                      "thumbnailwidth":"75"
+                   },
+                   "type":"image"
+                }
+             ],
+             "headline":{
+                "main":"Your Weekend Briefing"
+             },
+             "keywords":[
+ 
+             ],
+             "pub_date":"2016-04-01T00:00:00Z",
+             "document_type":"multimedia",
+             "news_desk":"NYT Now",
+             "section_name":"NYT Now",
+             "subsection_name":null,
+             "byline":[
+ 
+             ],
+             "type_of_material":"Slideshow",
+             "_id":"5700fa4138f0d812ffdebabe",
+             "word_count":"11",
+             "slideshow_credits":"Dan Koeck for The New York Times"
+          },
+          {
+             "web_url":"https://www.nytimes.com/slideshow/2016/04/01/nytnow/the-week-on-instagram.html",
+             "snippet":"Photos posted this week on @nytimes took Instagram followers from an island inhabited by pigs in the Bahamas to a chess tournament in Moscow....",
+             "lead_paragraph":"Photos posted this week on @nytimes took Instagram followers from an island inhabited by pigs in the Bahamas to a chess tournament in Moscow.",
+             "abstract":null,
+             "print_page":null,
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/04/01/nytnow/the-week-on-instagram-slide-7YLS/the-week-on-instagram-slide-7YLS-thumbWide.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/04/01/nytnow/the-week-on-instagram-slide-7YLS/the-week-on-instagram-slide-7YLS-thumbWide.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":600,
+                   "url":"images/2016/04/01/nytnow/the-week-on-instagram-slide-7YLS/the-week-on-instagram-slide-7YLS-articleLarge.jpg",
+                   "height":600,
+                   "subtype":"xlarge",
+                   "legacy":{
+                      "xlargewidth":"600",
+                      "xlarge":"images/2016/04/01/nytnow/the-week-on-instagram-slide-7YLS/the-week-on-instagram-slide-7YLS-articleLarge.jpg",
+                      "xlargeheight":"600"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":75,
+                   "url":"images/2016/04/01/nytnow/the-week-on-instagram-slide-7YLS/the-week-on-instagram-slide-7YLS-thumbStandard.jpg",
+                   "height":75,
+                   "subtype":"thumbnail",
+                   "legacy":{
+                      "thumbnailheight":"75",
+                      "thumbnail":"images/2016/04/01/nytnow/the-week-on-instagram-slide-7YLS/the-week-on-instagram-slide-7YLS-thumbStandard.jpg",
+                      "thumbnailwidth":"75"
+                   },
+                   "type":"image"
+                }
+             ],
+             "headline":{
+                "main":"The Week on Instagram"
+             },
+             "keywords":[
+                {
+                   "rank":"1",
+                   "is_major":"N",
+                   "name":"subject",
+                   "value":"Photography"
+                },
+                {
+                   "rank":"2",
+                   "is_major":"N",
+                   "name":"organizations",
+                   "value":"Instagram Inc"
+                }
+             ],
+             "pub_date":"2016-04-01T00:00:00Z",
+             "document_type":"multimedia",
+             "news_desk":"NYT Now",
+             "section_name":"NYT Now",
+             "subsection_name":null,
+             "byline":[
+ 
+             ],
+             "type_of_material":"Slideshow",
+             "_id":"56ffb24438f0d87ce8f365ed",
+             "word_count":"24",
+             "slideshow_credits":"David Degner for The New York Times"
+          },
+          {
+             "web_url":"https://www.nytimes.com/slideshow/2016/04/01/us/politics/on-the-trail-the-week-of-march-27.html",
+             "snippet":"Candidates campaigned across New York, Pennsylvania and Wisconsin this week....",
+             "lead_paragraph":"Candidates campaigned across New York, Pennsylvania and Wisconsin this week.",
+             "abstract":null,
+             "print_page":null,
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/04/01/us/politics/01politicalpics-slide-3O0K/01politicalpics-slide-3O0K-thumbWide.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/04/01/us/politics/01politicalpics-slide-3O0K/01politicalpics-slide-3O0K-thumbWide.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":600,
+                   "url":"images/2016/04/01/us/politics/01politicalpics-slide-3O0K/01politicalpics-slide-3O0K-articleLarge.jpg",
+                   "height":400,
+                   "subtype":"xlarge",
+                   "legacy":{
+                      "xlargewidth":"600",
+                      "xlarge":"images/2016/04/01/us/politics/01politicalpics-slide-3O0K/01politicalpics-slide-3O0K-articleLarge.jpg",
+                      "xlargeheight":"400"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":75,
+                   "url":"images/2016/04/01/us/politics/01politicalpics-slide-3O0K/01politicalpics-slide-3O0K-thumbStandard.jpg",
+                   "height":75,
+                   "subtype":"thumbnail",
+                   "legacy":{
+                      "thumbnailheight":"75",
+                      "thumbnail":"images/2016/04/01/us/politics/01politicalpics-slide-3O0K/01politicalpics-slide-3O0K-thumbStandard.jpg",
+                      "thumbnailwidth":"75"
+                   },
+                   "type":"image"
+                }
+             ],
+             "headline":{
+                "main":"On the Trail: The Week of March 27"
+             },
+             "keywords":[
+                {
+                   "rank":"1",
+                   "is_major":"N",
+                   "name":"persons",
+                   "value":"Clinton, Hillary Rodham"
+                },
+                {
+                   "rank":"2",
+                   "is_major":"N",
+                   "name":"persons",
+                   "value":"Trump, Donald J"
+                },
+                {
+                   "rank":"3",
+                   "is_major":"N",
+                   "name":"persons",
+                   "value":"Sanders, Bernard"
+                },
+                {
+                   "rank":"4",
+                   "is_major":"N",
+                   "name":"persons",
+                   "value":"Kasich, John R"
+                },
+                {
+                   "rank":"5",
+                   "is_major":"N",
+                   "name":"persons",
+                   "value":"Cruz, Ted"
+                },
+                {
+                   "rank":"6",
+                   "is_major":"N",
+                   "name":"glocations",
+                   "value":"New York State"
+                },
+                {
+                   "rank":"7",
+                   "is_major":"N",
+                   "name":"glocations",
+                   "value":"Pennsylvania"
+                },
+                {
+                   "rank":"8",
+                   "is_major":"N",
+                   "name":"glocations",
+                   "value":"Wisconsin"
+                }
+             ],
+             "pub_date":"2016-04-01T00:00:00Z",
+             "document_type":"multimedia",
+             "news_desk":"U.S. / Politics",
+             "section_name":"U.S.",
+             "subsection_name":"Politics",
+             "byline":[
+ 
+             ],
+             "type_of_material":"Slideshow",
+             "_id":"56ff3bde38f0d87ce8f36572",
+             "word_count":"10",
+             "slideshow_credits":"Eric Thayer for The New York Times"
+          },
+          {
+             "web_url":"https://wordplay.blogs.nytimes.com/2016/04/01/crib-note/",
+             "snippet":"Brad Wilber and Doug Peterson offer us a Saturday challenge....",
+             "lead_paragraph":null,
+             "abstract":"Brad Wilber and Doug Peterson offer us a Saturday challenge.",
+             "print_page":null,
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/03/30/crosswords/guitar/guitar-thumbWide.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/03/30/crosswords/guitar/guitar-thumbWide.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":600,
+                   "url":"images/2016/03/30/crosswords/guitar/guitar-articleLarge.jpg",
+                   "height":400,
+                   "subtype":"xlarge",
+                   "legacy":{
+                      "xlargewidth":"600",
+                      "xlarge":"images/2016/03/30/crosswords/guitar/guitar-articleLarge.jpg",
+                      "xlargeheight":"400"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":75,
+                   "url":"images/2016/03/30/crosswords/guitar/guitar-thumbStandard.jpg",
+                   "height":75,
+                   "subtype":"thumbnail",
+                   "legacy":{
+                      "thumbnailheight":"75",
+                      "thumbnail":"images/2016/03/30/crosswords/guitar/guitar-thumbStandard.jpg",
+                      "thumbnailwidth":"75"
+                   },
+                   "type":"image"
+                }
+             ],
+             "headline":{
+                "main":"Crib Note",
+                "kicker":"Wordplay"
+             },
+             "keywords":[
+                {
+                   "rank":"1",
+                   "name":"subject",
+                   "value":"Crossword Puzzles"
+                }
+             ],
+             "pub_date":"2016-04-01T22:00:31Z",
+             "document_type":"blogpost",
+             "news_desk":"Business",
+             "section_name":"Crosswords & Games",
+             "subsection_name":null,
+             "byline":{
+                "person":[
+                   {
+                      "organization":"",
+                      "role":"reported",
+                      "firstname":"Deb",
+                      "rank":1,
+                      "lastname":"AMLEN"
+                   }
+                ],
+                "original":"By DEB AMLEN"
+             },
+             "type_of_material":"Blog",
+             "_id":"56ff286138f0d87ce8f36537",
+             "word_count":"424",
+             "slideshow_credits":null
+          },
+          {
+             "web_url":"https://www.nytimes.com/politics/first-draft/2016/04/01/donald-trump-steps-awkwardly-into-abortion-debate-for-second-time-this-week/",
+             "snippet":"Mr. Trump said that current laws on abortion should remain intact. Then his spokeswoman said he meant that the laws should remain intact only until he seeks to change them as president....",
+             "lead_paragraph":null,
+             "abstract":"Mr. Trump said that current laws on abortion should remain intact. Then his spokeswoman said he meant that the laws should remain intact only until he seeks to change them as president.",
+             "print_page":null,
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/04/02/us/31firstdraft-trump/31firstdraft-trump-thumbWide.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/04/02/us/31firstdraft-trump/31firstdraft-trump-thumbWide.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":600,
+                   "url":"images/2016/04/02/us/31firstdraft-trump/31firstdraft-trump-articleLarge.jpg",
+                   "height":400,
+                   "subtype":"xlarge",
+                   "legacy":{
+                      "xlargewidth":"600",
+                      "xlarge":"images/2016/04/02/us/31firstdraft-trump/31firstdraft-trump-articleLarge.jpg",
+                      "xlargeheight":"400"
+                   },
+                   "type":"image"
+                },
+                {
+                   "width":75,
+                   "url":"images/2016/04/02/us/31firstdraft-trump/31firstdraft-trump-thumbStandard.jpg",
+                   "height":75,
+                   "subtype":"thumbnail",
+                   "legacy":{
+                      "thumbnailheight":"75",
+                      "thumbnail":"images/2016/04/02/us/31firstdraft-trump/31firstdraft-trump-thumbStandard.jpg",
+                      "thumbnailwidth":"75"
+                   },
+                   "type":"image"
+                }
+             ],
+             "headline":{
+                "main":"Donald Trump Steps Awkwardly Into Abortion Debate for Second Time This Week",
+                "kicker":"First Draft"
+             },
+             "keywords":[
+                {
+                   "rank":"1",
+                   "name":"persons",
+                   "value":"Trump, Donald J"
+                },
+                {
+                   "rank":"1",
+                   "name":"subject",
+                   "value":"Abortion"
+                },
+                {
+                   "rank":"2",
+                   "name":"subject",
+                   "value":"Presidential Election of 2016"
+                }
+             ],
+             "pub_date":"2016-04-01T21:54:57Z",
+             "document_type":"blogpost",
+             "news_desk":"Politics",
+             "section_name":"U.S.",
+             "subsection_name":"Politics",
+             "byline":{
+                "person":[
+                   {
+                      "organization":"",
+                      "role":"reported",
+                      "firstname":"Maggie",
+                      "rank":1,
+                      "lastname":"HABERMAN"
+                   }
+                ],
+                "original":"By MAGGIE HABERMAN"
+             },
+             "type_of_material":"Blog",
+             "_id":"56ff269838f0d87ce8f36533",
+             "word_count":"511",
+             "slideshow_credits":null
+          },
+          {
+             "web_url":"https://www.nytimes.com/2016/04/02/arts/dance/choreographers-who-dare-to-risk-boredom-in-the-name-of-insight.html",
+             "snippet":"The Adham Hafez Company and Raduoan Mriziga presented works as part of New York Live Arts’ Live Ideas series....",
+             "lead_paragraph":"The Adham Hafez Company and Raduoan Mriziga presented works as part of New York Live Arts’ Live Ideas series.",
+             "abstract":"Brian Seibert Critic's Notebook considers role of boredom in dance performances by Cairo-based Adham Hafez Company and Moroccan choreographer Radouan Mriziga in New York Live Arts' Live Ideas series.",
+             "print_page":"6",
+             "blog":[
+ 
+             ],
+             "source":"The New York Times",
+             "multimedia":[
+                {
+                   "width":190,
+                   "url":"images/2016/04/02/arts/02IDEAS/02IDEAS-thumbWide.jpg",
+                   "height":126,
+                   "subtype":"wide",
+                   "legacy":{
+                      "wide":"images/2016/04/02/arts/02IDEAS/02IDEAS-thumbWide.jpg",
+                      "wideheight":"126",
+                      "widewidth":"190"
+                   },
+                   "type":"image"
+                }
+             ]
+          }
+       ]
+    }
+ }
