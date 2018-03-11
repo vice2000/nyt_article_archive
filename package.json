@@ -8,31 +8,29 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "concurrently \"node index.js\" \"npm run copy-normalize\" \"npm run build-css-dev\" \"npm run watch-copy-js\"",
-    "build-production": "concurrently \"npm run build-css-prod\" \"npm run copy-js \" \"npm run copy-assets\" \"npm run copy-normalize\"",
-    "log": "node -e \"console.log(process.cwd())\"",
-    "build-css-dev": "node-sass --watch --output-style='expanded' --source-map-embed --source-map-root='file://pwd' --include-path sass/partials sass/*.sass static/css/main.css",
-    "build-css-prod": "rimraf static/css/**/* && node-sass --output-style='compressed' --include-path sass/partials sass/*.sass static/css/main.css",
-    "copy-assets": "copy assets/* static/",
-    "copy-normalize": "copy ./node_modules/normalize.css/normalize.css static/vendor",
-    "copy-js": "copy js/**/* static/js",
+    "dev": "node index.js & npm run copy-vendor & npm run build-css:dev & npm run watch-copy-js",
+    "build-production": "npm run build-css:prod && npm run copy-js && npm run copy-assets && npm run copy-vendor",
+    "log:cwd": "node -e 'console.log(process.cwd())'",
+    "build-css:dev": "node-sass --watch --output-style='expanded' --source-map-embed --source-map-root='file://pwd' --include-path sass/partials sass/*.sass static/css/main.css",
+    "build-css:prod": "rm -rf static/css/**/* && node-sass --output-style='compressed' --include-path sass/partials sass/*.sass static/css/main.css",
+    "copy-assets": "cp -r assets static",
+    "copy-vendor": "cp -r vendor static",
+    "copy-js": "cp -r js static",
     "watch-copy-js": "watch 'npm run copy-js' js",
-    "postinstall": "npm run build-production"
+    "postinstall": "npm run build-production",
+    "copy-normalize": "mkdir -p vendor && cp ./node_modules/normalize.css/normalize.css vendor/normalize.css",
+    "prebuild-production": "npm run copy-normalize",
+    "predev": "npm run copy-normalize"
   },
   "author": "Tobias Weiß",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.17.1",
-    "concurrently": "^3.4.0",
-    "copy": "^0.3.0",
-    "dotenv": "^4.0.0",
-    "express": "^4.14.0",
-    "node-sass": "^4.5.0",
-    "normalize.css": "^6.0.0",
-    "rimraf": "^2.5.4",
-    "watch": "^1.0.2"
+    "dotenv": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.19.0"
+    "eslint": "^3.19.0",
+    "node-sass": "^4.5.0",
+    "normalize.css": "^6.0.0",
+    "watch": "^1.0.2"
   }
 }
