@@ -4,7 +4,8 @@
         date={},
         docs = [],
         msg,
-        loading_spinner = '<div class="uil-ring-css" style="transform:scale(0.69);"><div></div></div>';
+        loading_spinner = '<div class="uil-ring-css" style="transform:scale(0.69);"><div></div></div>',
+        localforage = require('localforage');
 
     (function set_max_date(input){
         let today = new Date();
@@ -15,7 +16,7 @@
     })(month_picker);
 
     function render_teasers(){
-        for (let i = 0; i < docs.length; i++){
+        for (let i = 0, len = docs.length; i < len; i+=1){
             let headline = docs[i].headline.main;
             let link = docs[i].web_url;
             let snippet = docs[i].snippet;
@@ -58,6 +59,7 @@
                 if (response.status === 200){
                     return response.json().then(function(json) {
                         docs = json.response.docs;
+                        localforage.setItem('nyt_teasers', docs);
                     }).then(function(){
                         teasers.innerHTML='';
                         render_teasers();

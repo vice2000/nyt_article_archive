@@ -8,30 +8,33 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "node index.js & npm run copy-vendor & npm run build-css:dev & npm run watch-copy-js",
-    "build-production": "npm run build-css:prod && npm run copy-js && npm run copy-assets && npm run copy-vendor",
+    "dev": "node index.js & npm run copy-vendor & npm run build-css:dev & npm run js:dev",
+    "build-production": "npm run build-css:prod && npm run copy-assets && npm run copy-vendor && npm run js:prod",
     "log:cwd": "node -e 'console.log(process.cwd())'",
     "build-css:dev": "node-sass --watch --output-style='expanded' --source-map-embed --source-map-root='file://pwd' --include-path sass/partials sass/*.sass static/css/main.css",
     "build-css:prod": "rm -rf static/css/**/* && node-sass --output-style='compressed' --include-path sass/partials sass/*.sass static/css/main.css",
     "copy-assets": "cp -r assets static",
     "copy-vendor": "cp -r vendor static",
-    "copy-js": "cp -r js static",
-    "watch-copy-js": "watch 'npm run copy-js' js",
     "postinstall": "npm run build-production",
     "copy-normalize": "mkdir -p vendor && cp ./node_modules/normalize.css/normalize.css vendor/normalize.css",
     "prebuild-production": "npm run copy-normalize",
-    "predev": "npm run copy-normalize"
+    "predev": "npm run copy-normalize",
+    "js:dev": "webpack -d --watch",
+    "js:prod": "webpack -p"
   },
   "author": "Tobias Weiß",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^4.0.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "localforage": "^1.6.0"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
     "node-sass": "^4.5.0",
     "normalize.css": "^6.0.0",
-    "watch": "^1.0.2"
+    "path": "^0.12.7",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.12"
   }
 }
