@@ -1,6 +1,8 @@
 const https = require('https');
 const api_key = process.env.NYT_ARCHIVE_API_KEY ? process.env.NYT_ARCHIVE_API_KEY : 'No api key provided';
 const debug = process.env.ENVIRONMENT === 'development';
+const JSONStream = require('JSONStream');
+const es = require('event-stream');
 const options = {
     hostname: 'api.nytimes.com',
     port: 443,
@@ -22,15 +24,23 @@ exports.callApi = (request, on_result) => {
     }
 
     const req = https.request(options, res => {
-        let responseBody = '';
+        let url = JSONStream.parse(['response','docs',true,'web_url']);
+        let snippet = JSONStream.parse(['response','docs',true,'snippet']);
         res.setEncoding('utf8');
+        res.pipe(url)
+            .pipe(es.mapSync(data => {
+                console.log(data);
+                return data;
+            }));
 
-        res.on('data', chunk => {
-            responseBody += chunk;
-        });
+        res.pipe(snippet)
+        .pipe(es.mapSync(data => {
+            console.log(data);
+            return data;
+        }));
 
         res.on('end', () => {
-            on_result(responseBody, res.statusCode);
+           // on_result(responseBody, res.statusCode);
         });
     });
     req.on('error', err => {
