@@ -2,7 +2,6 @@ const https = require('https');
 const api_key = process.env.NYT_ARCHIVE_API_KEY ? process.env.NYT_ARCHIVE_API_KEY : 'No api key provided';
 const debug = process.env.ENVIRONMENT === 'development';
 const JSONStream = require('JSONStream');
-const es = require('event-stream');
 const options = {
     hostname: 'api.nytimes.com',
     port: 443,
@@ -24,23 +23,32 @@ exports.callApi = (request, on_result) => {
     }
 
     const req = https.request(options, res => {
-        let url = JSONStream.parse(['response','docs',true,'web_url']);
-        let snippet = JSONStream.parse(['response','docs',true,'snippet']);
-        res.setEncoding('utf8');
-        res.pipe(url)
-            .pipe(es.mapSync(data => {
-                console.log(data);
-                return data;
-            }));
 
-        res.pipe(snippet)
-        .pipe(es.mapSync(data => {
-            console.log(data);
-            return data;
-        }));
+        res.setEncoding('utf8');
+
+        let teasers = [],
+            items = [
+                'web_url',
+                'snippet',
+                'headline',
+                'pub_date',
+                'keywords'
+            ];
+
+        items.map((item) => {
+            res.pipe(
+                JSONStream.parse(['response', 'docs', true, item], (selectedItem, args) => {
+                    // create empty teaser object
+                    if(!teasers[args[2]]) {
+                        teasers[args[2]] = {};
+                    }
+                    teasers[args[2]][item] = selectedItem;
+                })
+            );
+        });
 
         res.on('end', () => {
-           // on_result(responseBody, res.statusCode);
+            on_result(JSON.stringify(teasers), res.statusCode);
         });
     });
     req.on('error', err => {

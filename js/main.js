@@ -58,7 +58,7 @@
             fetch(request).then(function(response) {
                 if (response.status === 200){
                     return response.json().then(function(json) {
-                        docs = json.response.docs;
+                        docs = json;
                         localforage.setItem('nyt_teasers', docs);
                     }).then(function(){
                         teasers.innerHTML='';
