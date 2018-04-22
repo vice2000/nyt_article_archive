@@ -55,24 +55,33 @@
         if (month_picker.value){
             teasers.innerHTML='';
             teasers.insertAdjacentHTML('afterbegin', loading_spinner);
-            fetch(request).then(function(response) {
-                if (response.status === 200){
-                    return response.json().then(function(json) {
-                        docs = json;
-                        localforage.setItem('nyt_teasers', docs);
-                    }).then(function(){
-                        teasers.innerHTML='';
-                        render_teasers();
-                    });
-                } else {
-                    return response.json().then(function(json){
-                        msg = json.message;
-                    }).then(function(){
-                        teasers.innerHTML=`<h1>${response.status} ${response.statusText}</h1><p>${msg}</p>`;
-                    });
-                }
-
-            });
+            localforage.keys()
+                .then(keys => {
+                    if (keys.indexOf(month_picker.value) > -1) {
+                        localforage.getItem(month_picker.value)
+                            .then(item => {docs = item;})
+                            .then(() => {render_teasers();});
+                    } else {
+                        fetch(request).then(function(response) {
+                            if (response.status === 200){
+                                return response.json().then(function(json) {
+                                    docs = json;
+                                    localforage.setItem(`${month_picker.value}`, docs);
+                                }).then(function(){
+                                    teasers.innerHTML='';
+                                    render_teasers();
+                                });
+                            } else {
+                                return response.json().then(function(json){
+                                    msg = json.message;
+                                }).then(function(){
+                                    teasers.innerHTML=`<h1>${response.status} ${response.statusText}</h1><p>${msg}</p>`;
+                                });
+                            }
+                        });
+                    }
+                })
+                .catch(err => { console.error(`Error retrieving data to render teasers: ${err}`);});
         }
     });
 })();
