@@ -3,5 +3,6 @@
 
 #### Disclaimer
 
-* relies on [the fetch api ](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) on the client-side
-* tested only in Chrome 57
+* uses native datepicker, working only in Chrome
+* requests may take a while unless any data ist persisted in indexedDB
+* purge indexedDB manually from time to time

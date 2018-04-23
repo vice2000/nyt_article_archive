@@ -3,5 +3,5 @@ node_modules/
 static/css/
 static/js/
 static/assets/
-vendor/
+static/vendor/
 npm-debug.log
