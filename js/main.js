@@ -57,11 +57,29 @@ import Ajax from './util/Ajax';
                             .then(items => items.map(render_teasers));
                     } else {
                         return new Promise ((resolve, reject) =>    {
-                            Ajax.post('/', date).then(response => {
+                            Ajax.post('/', date)
+                            .then(response => {
                                 teasers.innerHTML='';
-                                let items = JSON.parse(response);
-                                localforage.setItem(month_picker.value, items);
-                                resolve(items.map(render_teasers));
+                                return JSON.parse(response);
+                            })
+                            .then(parsed => {
+                                let storageObject = [],
+                                    items = parsed.response.docs;
+                                items.map(item => {
+                                    let { headline, web_url, snippet, pub_date, keywords } = item;
+                                    storageObject.push(
+                                        { headline: headline,
+                                            web_url: web_url,
+                                            snippet: snippet,
+                                            pub_date: pub_date,
+                                            keywords: keywords
+                                        });
+                                });
+                                return storageObject;
+                            })
+                            .then(storageObject => {
+                                localforage.setItem(month_picker.value, storageObject);
+                                resolve(storageObject.map(render_teasers));
                             })
                             .catch(err => {
                                 console.error('Error resolving request: ', err);
