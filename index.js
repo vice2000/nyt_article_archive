@@ -27,8 +27,8 @@ http.createServer(app).listen(port);
 if (debug) {
     // serve mock data only in dev env
     const https = require('https');
-    const privateKey  = fs.readFileSync(process.env.SSLKEY, 'utf8');
-    const certificate = fs.readFileSync(process.env.SSLCERT, 'utf8');
+    const privateKey  = process.env.SSLKEY ? fs.readFileSync(process.env.SSLKEY, 'utf8'): console.error('SSL Key missing');
+    const certificate = process.env.SSLCERT ? fs.readFileSync(process.env.SSLCERT, 'utf8') : console.error('SSL Cert missing');
     const credentials = {key: privateKey, cert: certificate};
 
     app.use(express.static(__dirname + '/test'));
