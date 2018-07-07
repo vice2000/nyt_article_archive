@@ -27,14 +27,14 @@
   "dependencies": {
     "dotenv": "^4.0.0",
     "express": "^4.16.3",
-    "localforage": "^1.6.0"
+    "localforage": "^1.7.2"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
-    "node-sass": "^4.5.0",
+    "node-sass": "^4.9.1",
     "normalize.css": "^6.0.0",
     "path": "^0.12.7",
-    "webpack": "^4.2.0",
-    "webpack-cli": "^2.0.12"
+    "webpack": "^4.15.1",
+    "webpack-cli": "^3.0.8"
   }
 }
