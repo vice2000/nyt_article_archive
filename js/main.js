@@ -68,12 +68,8 @@ import Ajax from './util/Ajax';
                                 items.map(item => {
                                     let { headline, web_url, snippet, pub_date, keywords } = item;
                                     storageObject.push(
-                                        { headline: headline,
-                                            web_url: web_url,
-                                            snippet: snippet,
-                                            pub_date: pub_date,
-                                            keywords: keywords
-                                        });
+                                        { headline, web_url, snippet, pub_date, keywords }
+                                    );
                                 });
                                 return storageObject;
                             })
