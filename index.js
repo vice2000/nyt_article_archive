@@ -8,7 +8,7 @@ const { callApi } = require('./api/callApi.js');
 const port = process.env.PORT || 3000;
 const debug = process.env.ENVIRONMENT === 'development';
 
-app.use(express.static(__dirname + '/static'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({
     extended: true
