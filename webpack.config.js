@@ -26,7 +26,7 @@ const config = (env) => {
 
     return {
         devtool: devMode
-            ? 'cheap-eval-source-map'
+            ? 'cheap-module-source-map'
             : 'hidden-source-map',
         resolve: { extensions: ['.js', '.jsx'] },
         context: resolve('src'),
