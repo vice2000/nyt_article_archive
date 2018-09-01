@@ -36,23 +36,22 @@ class App extends React.Component {
         this.setState({ teasers });
     }
 
-    foo() {
-        //eslint-disable-next-line
-        console.log('foo');
-    }
-
     renderTeasers() {
         if (this.state.teasers) {
-            return this.state.teasers.map(teaser => (
-                <Teaser
-                    key={teaser._id}
-                    headline={teaser.headline}
-                    pub_date={teaser.pub_date}
-                    snippet={teaser.snippet}
-                    keywords={teaser.keywords}
-                    link={teaser.web_url}
-                />
-            ));
+            return this.state.teasers.map((teaser) => {
+                const { headline, pub_date, snippet, keywords, web_url } = teaser;
+                return (
+                    <Teaser
+                        key={teaser._id}
+                        headline={headline}
+                        pub_date={pub_date}
+                        snippet={snippet}
+                        keywords={keywords}
+                        link={web_url}
+                    />
+                );
+            }
+        );
         }
     }
 
