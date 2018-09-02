@@ -4,7 +4,6 @@ import Datepicker from './Datepicker.jsx';
 import Teaser from './Teaser.jsx';
 import localforage from 'localforage';
 
-
 class App extends React.Component {
 
     constructor(props) {
@@ -49,8 +48,10 @@ class App extends React.Component {
 
         items.map(item => {
             const { _id, headline, web_url, snippet, pub_date, keywords } = item;
+            let keywordValues = [];
+            for(let kw of keywords) { keywordValues.push(kw.value); }
             storageObject.push(
-            { _id, headline, web_url, snippet, pub_date, keywords }
+            { _id, headline, web_url, snippet, pub_date, keywordValues }
         );
             this.createIndexedDbStorage(storageObject, date);
         });
@@ -75,14 +76,14 @@ class App extends React.Component {
     renderTeasers() {
         if (this.state.teasers) {
             return this.state.teasers.map((teaser, count) => {
-                const { _id, headline, pub_date, snippet, keywords, web_url } = teaser;
+                const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
                 return (
                     <Teaser
                         key={`${_id}_${count}`}
                         headline={headline}
                         pub_date={pub_date}
                         snippet={snippet}
-                        keywords={keywords}
+                        keywords={keywordValues}
                         link={web_url}
                     />
                 );
