@@ -3,6 +3,7 @@ import Ajax from '../utils/Ajax';
 import Datepicker from './Datepicker.jsx';
 import Teaser from './Teaser.jsx';
 import localforage from 'localforage';
+import Keywords from './Keywords';
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
         this.getHTTP = this.getHTTP.bind(this);
         this.createIndexedDbStorage = this.createIndexedDbStorage.bind(this);
         this.getIndexedDB = this.getIndexedDB.bind(this);
+        this.extractKeywords = this.extractKeywords.bind(this);
     }
 
     getData (date) {
@@ -61,12 +63,28 @@ class App extends React.Component {
         const indexedDB_key = `${date.year}_${date.month}`;
         await localforage.setItem(indexedDB_key, storageData);
         this.setState({ teasers: storageData, loading: false });
+        this.extractKeywords();
+    }
+
+    extractKeywords () {
+        if (this.state.teasers) {
+            let allKeywords = [];
+            this.state.teasers.map(teaser => {
+                for (let value of teaser.keywordValues) { 
+                    allKeywords.push(value);
+                }
+            });
+            this.setState({ allKeywords });
+        }
     }
     
     render () {
         return (
             <div>
                 <Datepicker getData={this.getData} />
+                {this.state.allKeywords &&
+                    <Keywords keywords={this.state.allKeywords}></Keywords>
+                }
                 <div>{ this.state.loading && ('Loading, please wait ...') || this.renderTeasers() }</div>
             </div>
         );
