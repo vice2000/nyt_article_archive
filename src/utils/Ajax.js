@@ -15,5 +15,5 @@ class Ajax {
             xhr.send(JSON.stringify(body));
         });
     }
-  }
+}
 export default Ajax;
