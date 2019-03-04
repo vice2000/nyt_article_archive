@@ -26,7 +26,7 @@ class App extends React.Component {
             keys => {
                 if (keys.indexOf(indexedDB_key) > -1) {
                     this.getIndexedDB(indexedDB_key);
-
+                    this.extractKeywords();
                 } else {
                     this.getHTTP(date);
                 }

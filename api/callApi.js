@@ -5,8 +5,7 @@ const options = {
     hostname: 'api.nytimes.com',
     port: 443,
     path: '',
-    method: 'GET',
-    headers: { 'api-key': api_key },
+    method: 'GET'
 };
 
 if (debug) {
@@ -18,7 +17,7 @@ if (debug) {
 exports.callApi = (request, on_result) => {
 
     if (!debug) {
-        options.path = `/svc/archive/v1/${request.body.year}/${request.body.month}.json`;
+        options.path = `/svc/archive/v1/${request.body.year}/${request.body.month}.json?api-key=${api_key}`;
     }
 
     const req = https.request(options, res => {

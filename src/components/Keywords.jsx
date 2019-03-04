@@ -4,7 +4,10 @@ import PropTypes from 'prop-types';
 
 export default function Keywords ({keywords}) {
     return (
-        <div>{keywords.join(', ')}</div>
+        <article>
+            <h3>Keywords</h3>
+            {keywords.join(', ')}
+        </article>
     );
 }
 
