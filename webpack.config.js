@@ -29,7 +29,7 @@ const config = (env) => {
             ? 'cheap-module-source-map'
             : 'hidden-source-map',
         resolve: { extensions: ['.js', '.jsx'] },
-        context: resolve('src'),
+        context: resolve(__dirname, 'src'),
         entry: './index.js',
         watch: devMode,
         watchOptions: {
@@ -67,19 +67,9 @@ const config = (env) => {
                 },
                 {
                     exclude: /node_modules/,
-                    test: /\.json$/,
-                    use: 'file-loader?name=data/[name].[ext]',
-                },
-                {
-                    exclude: /node_modules/,
                     test: /\.(eot|ttf|woff|woff2)$/,
                     use: 'file-loader?name=fonts/[name].[ext]',
-                },
-                {
-                    exclude: /node_modules/,
-                    test: /robots\.txt$/,
-                    use: 'file-loader?name=robots.txt',
-                },
+                }
             ],
         },
         output: {
