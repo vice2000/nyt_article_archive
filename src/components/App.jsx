@@ -1,14 +1,15 @@
 import React from 'react';
 import Ajax from '../utils/Ajax';
-import Datepicker from './Datepicker.jsx';
-import Teaser from './Teaser.jsx';
+import dedupeArray from '../utils/dedupeArray';
+import Datepicker from './Datepicker';
+import Teaser from './Teaser';
 import localforage from 'localforage';
 import Keywords from './Keywords';
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = { loading: false };
         this.receiveTeasers = this.receiveTeasers.bind(this);
         this.renderTeasers = this.renderTeasers.bind(this);
@@ -26,7 +27,6 @@ class App extends React.Component {
             keys => {
                 if (keys.indexOf(indexedDB_key) > -1) {
                     this.getIndexedDB(indexedDB_key);
-                    this.extractKeywords();
                 } else {
                     this.getHTTP(date);
                 }
@@ -41,51 +41,59 @@ class App extends React.Component {
 
     async getIndexedDB (key) {
         const result = await localforage.getItem(key);
-        this.setState({ teasers: result, loading: false });
+        this.setState(
+            {
+                teasers: result.teasers,
+                allKeywords: result.allKeywords,
+                loading: false 
+            }
+        );
     }
 
     receiveTeasers(data, date) {
         const items = data.response.docs;
-        let storageObject = [];
+        let teasers = [];
 
         items.map(item => {
             const { _id, headline, web_url, snippet, pub_date, keywords } = item;
             let keywordValues = [];
             for(let kw of keywords) { keywordValues.push(kw.value); }
-            storageObject.push(
-            { _id, headline, web_url, snippet, pub_date, keywordValues }
-        );
-            this.createIndexedDbStorage(storageObject, date);
+            teasers.push(
+                { _id, headline, web_url, snippet, pub_date, keywordValues }
+            );
         });
+        this.createIndexedDbStorage({ teasers, allKeywords: this.extractKeywords(teasers) }, date);
     }
 
     async createIndexedDbStorage(storageData, date) {
+        const { teasers, allKeywords } = storageData;
         const indexedDB_key = `${date.year}_${date.month}`;
         await localforage.setItem(indexedDB_key, storageData);
-        this.setState({ teasers: storageData, loading: false });
-        this.extractKeywords();
+        this.setState({ teasers, allKeywords, loading: false });
     }
 
-    extractKeywords () {
-        if (this.state.teasers) {
-            let allKeywords = [];
-            this.state.teasers.map(teaser => {
-                for (let value of teaser.keywordValues) { 
-                    allKeywords.push(value);
-                }
-            });
-            this.setState({ allKeywords });
-        }
+    extractKeywords (teasers) {
+        let allKeywords = [];
+        teasers.map(teaser => {
+            for (let value of teaser.keywordValues) { 
+                allKeywords.push(value);
+            }
+        });
+        return dedupeArray(allKeywords);
     }
-    
+
     render () {
         return (
             <div>
                 <Datepicker getData={this.getData} />
-                {this.state.allKeywords &&
-                    <Keywords keywords={this.state.allKeywords}></Keywords>
+                { this.state.loading &&
+                  ('Loading, please wait ...') ||
+                  this.state.allKeywords &&
+                  <Keywords keywords={this.state.allKeywords}></Keywords>
                 }
-                <div>{ this.state.loading && ('Loading, please wait ...') || this.renderTeasers() }</div>
+                { this.state.loading && <div></div>||
+                  <div>{this.renderTeasers()}</div>
+                }
             </div>
         );
 

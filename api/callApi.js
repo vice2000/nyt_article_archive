@@ -1,6 +1,7 @@
 const https = require('https');
 const api_key = process.env.NYT_ARCHIVE_API_KEY ? process.env.NYT_ARCHIVE_API_KEY : 'No api key provided';
 const debug = process.env.ENVIRONMENT === 'development';
+// const debug = false;
 const options = {
     hostname: 'api.nytimes.com',
     port: 443,
