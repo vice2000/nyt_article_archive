@@ -15,7 +15,6 @@ class App extends React.Component {
             filterKeyword: ''
         };
         this.receiveTeasers = this.receiveTeasers.bind(this);
-        this.renderTeasers = this.renderTeasers.bind(this);
         this.getData = this.getData.bind(this);
         this.getHTTP = this.getHTTP.bind(this);
         this.createIndexedDbStorage = this.createIndexedDbStorage.bind(this);
@@ -99,30 +98,26 @@ class App extends React.Component {
                   this.state.allKeywords &&
                   <Keywords keywords={this.state.allKeywords} propagateFilterValue={this.setFilterKeyword}></Keywords>
                 }
-                { this.state.loading && <div></div>||
-                  <div>{this.renderTeasers()}</div>
+                { this.state.loading && <div></div> || this.state.teasers &&
+                  <div>
+                      {this.state.teasers.map((teaser, count) => {
+                          const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
+                          return (
+                              <Teaser
+                                  key={`${_id}_${count}`}
+                                  headline={headline}
+                                  pub_date={pub_date}
+                                  snippet={snippet}
+                                  keywords={keywordValues}
+                                  link={web_url}
+                              />
+                          );
+                      })
+                      }</div>
                 }
             </div>
         );
 
-    }
-
-    renderTeasers() {
-        if (this.state.teasers) {
-            return this.state.teasers.map((teaser, count) => {
-                const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
-                return (
-                    <Teaser
-                        key={`${_id}_${count}`}
-                        headline={headline}
-                        pub_date={pub_date}
-                        snippet={snippet}
-                        keywords={keywordValues}
-                        link={web_url}
-                    />
-                );
-            });
-        }
     }
 }
 
