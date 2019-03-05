@@ -50,7 +50,8 @@ class App extends React.Component {
     async getIndexedDB (key) {
         const result = await localforage.getItem(key);
         this.setState(
-            {
+            {   
+                receivedTeasers: result.teasers,
                 renderedTeasers: result.teasers,
                 allKeywords: result.allKeywords,
                 loading: false 
