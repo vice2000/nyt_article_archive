@@ -1,7 +1,6 @@
 const https = require('https');
 const api_key = process.env.NYT_ARCHIVE_API_KEY ? process.env.NYT_ARCHIVE_API_KEY : 'No api key provided';
-const debug = process.env.ENVIRONMENT === 'development';
-// const debug = false;
+const isLocal = process.env.CALL_API === 'local';
 const options = {
     hostname: 'api.nytimes.com',
     port: 443,
@@ -9,7 +8,9 @@ const options = {
     method: 'GET'
 };
 
-if (debug) {
+if (isLocal) {
+    // eslint-disable-next-line no-console
+    console.log('### using local dummy data ###');
     options.port = 8443;
     options.hostname = 'localhost';
     options.path = '/mock_response.json'; 
@@ -17,7 +18,7 @@ if (debug) {
 
 exports.callApi = (request, on_result) => {
 
-    if (!debug) {
+    if (!isLocal) {
         options.path = `/svc/archive/v1/${request.body.year}/${request.body.month}.json?api-key=${api_key}`;
     }
 
