@@ -12,7 +12,11 @@ class App extends React.Component {
         super();
         this.state = {
             loading: false,
-            filterKeyword: ''
+            filterKeyword: '',
+            filteredTeasers: false,
+            receivedTeasers: false,
+            renderedTeasers: false,
+            allKeywords: false
         };
         this.receiveTeasers = this.receiveTeasers.bind(this);
         this.getData = this.getData.bind(this);
@@ -20,7 +24,7 @@ class App extends React.Component {
         this.createIndexedDbStorage = this.createIndexedDbStorage.bind(this);
         this.getIndexedDB = this.getIndexedDB.bind(this);
         this.extractKeywords = this.extractKeywords.bind(this);
-        this.setFilterKeyword = this.setFilterKeyword.bind(this);
+        this.filterTeasers = this.filterTeasers.bind(this);
     }
 
     getData (date) {
@@ -46,7 +50,7 @@ class App extends React.Component {
         const result = await localforage.getItem(key);
         this.setState(
             {
-                teasers: result.teasers,
+                renderedTeasers: result.teasers,
                 allKeywords: result.allKeywords,
                 loading: false 
             }
@@ -72,7 +76,7 @@ class App extends React.Component {
         const { teasers, allKeywords } = storageData;
         const indexedDB_key = `${date.year}_${date.month}`;
         await localforage.setItem(indexedDB_key, storageData);
-        this.setState({ teasers, allKeywords, loading: false });
+        this.setState({ receivedTeasers: teasers, renderedTeasers: teasers, allKeywords, loading: false });
     }
 
     extractKeywords (teasers) {
@@ -85,8 +89,15 @@ class App extends React.Component {
         return dedupeArray(allKeywords);
     }
 
-    setFilterKeyword(keyword) {
-        this.setState({filterKeyword: keyword});
+    filterTeasers(keyword) {
+        let matchingTeasers = [];
+        this.setState({ filterKeyword: keyword });
+        this.state.receivedTeasers.forEach(teaser => {
+            if (teaser.keywordValues.includes(keyword)) {
+                matchingTeasers.push(teaser);
+            }
+        });
+        this.setState({ renderedTeasers: matchingTeasers });
     }
 
     render () {
@@ -96,11 +107,11 @@ class App extends React.Component {
                 { this.state.loading &&
                   ('Loading, please wait ...') ||
                   this.state.allKeywords &&
-                  <Keywords keywords={this.state.allKeywords} propagateFilterValue={this.setFilterKeyword}></Keywords>
+                  <Keywords keywords={this.state.allKeywords} propagateFilterValue={this.filterTeasers}></Keywords>
                 }
-                { this.state.loading && <div></div> || this.state.teasers &&
+                { this.state.loading && <div></div> || this.state.renderedTeasers &&
                   <div>
-                      {this.state.teasers.map((teaser, count) => {
+                      {this.state.renderedTeasers.map((teaser, count) => {
                           const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
                           return (
                               <Teaser
