@@ -25,6 +25,7 @@ class App extends React.Component {
         this.getIndexedDB = this.getIndexedDB.bind(this);
         this.extractKeywords = this.extractKeywords.bind(this);
         this.filterTeasers = this.filterTeasers.bind(this);
+        this.clearFilter = this.clearFilter.bind(this);
     }
 
     getData (date) {
@@ -100,6 +101,10 @@ class App extends React.Component {
         this.setState({ renderedTeasers: matchingTeasers });
     }
 
+    clearFilter() {
+        this.setState({ renderedTeasers: this.state.receivedTeasers, filterKeyword: false });
+    }
+
     render () {
         return (
             <div>
@@ -107,7 +112,10 @@ class App extends React.Component {
                 { this.state.loading &&
                   ('Loading, please wait ...') ||
                   this.state.allKeywords &&
-                  <Keywords keywords={this.state.allKeywords} propagateFilterValue={this.filterTeasers}></Keywords>
+                  <div>
+                      <Keywords keywords={this.state.allKeywords} propagateFilterValue={this.filterTeasers}/>
+                      <button onClick={this.clearFilter}>Clear Filter</button>
+                  </div>
                 }
                 { this.state.loading && <div></div> || this.state.renderedTeasers &&
                   <div>
