@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-class Keywords extends React.Component {
+class KeywordSelect extends React.Component {
     constructor() {
         super();
         this.onChange = this.onChange.bind(this);
     }
 
     onChange(e) {
-        this.props.propagateFilterValue(e.target.value);
+        this.props.filterTeasers(e.target.value);
     }
 
     render() {
@@ -23,9 +23,9 @@ class Keywords extends React.Component {
     }
 }
 
-Keywords.propTypes = {
+KeywordSelect.propTypes = {
     keywords: PropTypes.array,
-    propagateFilterValue: PropTypes.func
+    filterTeasers: PropTypes.func
 };
 
-export default Keywords;
+export default KeywordSelect;

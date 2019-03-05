@@ -4,7 +4,7 @@ import dedupeArray from '../utils/dedupeArray';
 import Datepicker from './Datepicker';
 import Teaser from './Teaser';
 import localforage from 'localforage';
-import Keywords from './Keywords';
+import KeywordSelect from './KeywordSelect';
 
 class App extends React.Component {
 
@@ -113,7 +113,7 @@ class App extends React.Component {
                   ('Loading, please wait ...') ||
                   this.state.allKeywords &&
                   <div>
-                      <Keywords keywords={this.state.allKeywords} propagateFilterValue={this.filterTeasers}/>
+                      <KeywordSelect keywords={this.state.allKeywords} filterTeasers={this.filterTeasers}/>
                       <button onClick={this.clearFilter}>Clear Filter</button>
                   </div>
                 }
