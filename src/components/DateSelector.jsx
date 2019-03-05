@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 
 class DateSelector extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {};
         this.handleChange = this.handleChange.bind(this);
     }

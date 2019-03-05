@@ -10,7 +10,10 @@ class App extends React.Component {
 
     constructor() {
         super();
-        this.state = { loading: false };
+        this.state = {
+            loading: false,
+            filterKeyword: ''
+        };
         this.receiveTeasers = this.receiveTeasers.bind(this);
         this.renderTeasers = this.renderTeasers.bind(this);
         this.getData = this.getData.bind(this);
@@ -18,6 +21,7 @@ class App extends React.Component {
         this.createIndexedDbStorage = this.createIndexedDbStorage.bind(this);
         this.getIndexedDB = this.getIndexedDB.bind(this);
         this.extractKeywords = this.extractKeywords.bind(this);
+        this.setFilterKeyword = this.setFilterKeyword.bind(this);
     }
 
     getData (date) {
@@ -82,6 +86,10 @@ class App extends React.Component {
         return dedupeArray(allKeywords);
     }
 
+    setFilterKeyword(keyword) {
+        this.setState({filterKeyword: keyword});
+    }
+
     render () {
         return (
             <div>
@@ -89,7 +97,7 @@ class App extends React.Component {
                 { this.state.loading &&
                   ('Loading, please wait ...') ||
                   this.state.allKeywords &&
-                  <Keywords keywords={this.state.allKeywords}></Keywords>
+                  <Keywords keywords={this.state.allKeywords} propagateFilterValue={this.setFilterKeyword}></Keywords>
                 }
                 { this.state.loading && <div></div>||
                   <div>{this.renderTeasers()}</div>

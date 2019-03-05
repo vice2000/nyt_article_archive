@@ -4,8 +4,8 @@ import DateSelector from './DateSelector';
 
 class Datepicker extends React.Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {};
         this.setRequestDate = this.setRequestDate.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
