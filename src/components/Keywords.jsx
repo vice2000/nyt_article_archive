@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 
 export default function Keywords ({keywords}) {
     return (
-        <section>
-            <h3>Keywords</h3>
-            <p>{keywords.join(', ')}</p>
-        </section>
+        <select>
+            <option disabled>Keywords for Selected Month</option>
+            {keywords.map(keyword => <option key={keyword} name={keyword}>{keyword}</option>)} 
+        </select>
     );
 }
 
