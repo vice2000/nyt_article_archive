@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Teaser extends React.Component {
 
-    render () {
+    render() {
         const { headline, pub_date, snippet, keywords, link } = this.props;
         const date = new Date(pub_date);
         return(

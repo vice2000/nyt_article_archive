@@ -4,13 +4,9 @@ import PropTypes from 'prop-types';
 
 class DateSelector extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {};
-        this.handleChange = this.handleChange.bind(this);
-    }
+    state = {};
 
-    set_max_date(){
+    set_max_date() {
         let today = new Date();
         let year = today.getFullYear();
         let month = today.getMonth()+1;
@@ -18,7 +14,7 @@ class DateSelector extends React.Component {
         return (`${year}-${mth_leading_zero}`);
     }
 
-    handleChange(e) {
+    handleChange = (e) => {
 
         let date = {};
         let raw_date = e.currentTarget.value;

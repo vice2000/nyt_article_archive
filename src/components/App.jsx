@@ -8,27 +8,30 @@ import KeywordSelect from './KeywordSelect';
 
 class App extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            loading: false,
-            filterKeyword: '',
-            filteredTeasers: false,
-            receivedTeasers: false,
-            renderedTeasers: false,
-            allKeywords: false
-        };
-        this.receiveTeasers = this.receiveTeasers.bind(this);
-        this.getData = this.getData.bind(this);
-        this.getHTTP = this.getHTTP.bind(this);
-        this.createIndexedDbStorage = this.createIndexedDbStorage.bind(this);
-        this.getIndexedDB = this.getIndexedDB.bind(this);
-        this.extractKeywords = this.extractKeywords.bind(this);
-        this.filterTeasers = this.filterTeasers.bind(this);
-        this.clearFilter = this.clearFilter.bind(this);
+    state = {
+        loading: false,
+        filterKeyword: '',
+        filteredTeasers: [],
+        receivedTeasers: [],
+        renderedTeasers: [],
+        allKeywords: []
+    };
+
+    renderTeasers(teaser, count) {
+        const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
+        return (
+            <Teaser
+                key={`${_id}_${count}`}
+                headline={headline}
+                pub_date={pub_date}
+                snippet={snippet}
+                keywords={keywordValues}
+                link={web_url}
+            />
+        );
     }
 
-    getData (date) {
+    getData = (date) => {
         const indexedDB_key = `${date.year}_${date.month}`;
         this.setState({ loading: true });
         localforage.keys().then(
@@ -42,12 +45,12 @@ class App extends React.Component {
         );
     }
 
-    async getHTTP (date) {
+    getHTTP = async (date) => {
         const result = await Ajax.post('/', date);
         this.receiveTeasers(JSON.parse(result), date);
     }
 
-    async getIndexedDB (key) {
+    getIndexedDB = async (key) => {
         const result = await localforage.getItem(key);
         this.setState(
             {   
@@ -59,7 +62,7 @@ class App extends React.Component {
         );
     }
 
-    receiveTeasers(data, date) {
+    receiveTeasers = (data, date) => {
         const items = data.response.docs;
         let teasers = [];
 
@@ -74,7 +77,7 @@ class App extends React.Component {
         this.createIndexedDbStorage({ teasers, allKeywords: this.extractKeywords(teasers) }, date);
     }
 
-    async createIndexedDbStorage(storageData, date) {
+    createIndexedDbStorage = async (storageData, date) => {
         const { teasers, allKeywords } = storageData;
         const indexedDB_key = `${date.year}_${date.month}`;
         await localforage.setItem(indexedDB_key, storageData);
@@ -91,7 +94,7 @@ class App extends React.Component {
         return dedupeArray(allKeywords);
     }
 
-    filterTeasers(keyword) {
+    filterTeasers = (keyword) => {
         let matchingTeasers = [];
         this.setState({ filterKeyword: keyword });
         this.state.receivedTeasers.forEach(teaser => {
@@ -102,42 +105,24 @@ class App extends React.Component {
         this.setState({ renderedTeasers: matchingTeasers });
     }
 
-    clearFilter() {
+    clearFilter = () => {
         this.setState({ renderedTeasers: this.state.receivedTeasers, filterKeyword: false });
     }
 
     render () {
+        const { loading, renderedTeasers, allKeywords } = this.state;
         return (
-            <div>
+            <main>
                 <Datepicker getData={this.getData} />
-                { this.state.loading &&
-                  ('Loading, please wait ...') ||
-                  this.state.allKeywords &&
-                  <div>
-                      <KeywordSelect keywords={this.state.allKeywords} filterTeasers={this.filterTeasers}/>
-                      <button onClick={this.clearFilter}>Clear Filter</button>
-                  </div>
+                {loading && ('Loading, please wait ...') ||
+                     <div>
+                         <KeywordSelect keywords={allKeywords} filterTeasers={this.filterTeasers}/>
+                         <button onClick={this.clearFilter}>Clear Filter</button>
+                     </div>
                 }
-                { this.state.loading && <div></div> || this.state.renderedTeasers &&
-                  <div>
-                      {this.state.renderedTeasers.map((teaser, count) => {
-                          const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
-                          return (
-                              <Teaser
-                                  key={`${_id}_${count}`}
-                                  headline={headline}
-                                  pub_date={pub_date}
-                                  snippet={snippet}
-                                  keywords={keywordValues}
-                                  link={web_url}
-                              />
-                          );
-                      })
-                      }</div>
-                }
-            </div>
+                {loading && <div></div> || renderedTeasers.map(this.renderTeasers)}
+            </main>
         );
-
     }
 }
 

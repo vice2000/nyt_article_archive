@@ -3,12 +3,8 @@ import PropTypes from 'prop-types';
 
 
 class KeywordSelect extends React.Component {
-    constructor() {
-        super();
-        this.onChange = this.onChange.bind(this);
-    }
 
-    onChange(e) {
+    onChange = (e) => {
         this.props.filterTeasers(e.target.value);
     }
 
