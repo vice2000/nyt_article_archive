@@ -36,6 +36,7 @@ class DateSelector extends React.Component {
                 name="date"
                 type="month"
                 onChange={this.handleChange}
+                placeholder="Type in year and month, e.g. '2019-03'"
             />
         );
     }
