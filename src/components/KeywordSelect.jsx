@@ -9,19 +9,23 @@ class KeywordSelect extends React.Component {
     }
 
     render() {
-        const {keywords} = this.props;
+        const {keywords, clearFilter} = this.props;
         return (
-            <select onChange={this.onChange}>
-                <option disabled>Keywords for Selected Month</option>
-                {keywords.map(keyword => <option key={keyword} name={keyword}>{keyword}</option>)} 
-            </select>
+            <div className="header__keywordfilter">
+                <select onChange={this.onChange}>
+                    <option disabled>Keywords for Selected Month</option>
+                    {keywords.map(keyword => <option key={keyword} name={keyword}>{keyword}</option>)} 
+                </select>
+                <button onClick={clearFilter}>Clear Filter</button>
+            </div>
         );
     }
 }
 
 KeywordSelect.propTypes = {
     keywords: PropTypes.array,
-    filterTeasers: PropTypes.func
+    filterTeasers: PropTypes.func,
+    clearFilter: PropTypes.func
 };
 
 export default KeywordSelect;

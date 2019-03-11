@@ -1,0 +1,21 @@
+// default font declarations
+$font-sans-pro: 'Source Sans Pro', sans-serif;
+$font-monospace: 'Monaco', 'Courier New', monospace;
+$base-font-size: 16px;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// semantic fonts
+$font-standard: $font-sans-pro;
+
+// breakpoints
+$breakpoint-phablet: rem(480px);
+$breakpoint-tablet: rem(768px);
+$breakpoint-desktop: rem(968px);
+
+// spacing
+$page-padding: rem(16px);
+$page-padding--small: rem(8px);
+$content-width: rem(720px);

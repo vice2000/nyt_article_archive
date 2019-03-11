@@ -112,16 +112,16 @@ class App extends React.Component {
     render () {
         const { loading, renderedTeasers, allKeywords } = this.state;
         return (
-            <main>
-                <Datepicker getData={this.getData} />
-                {loading && ('Loading, please wait ...') ||
-                     <div>
-                         <KeywordSelect keywords={allKeywords} filterTeasers={this.filterTeasers}/>
-                         <button onClick={this.clearFilter}>Clear Filter</button>
-                     </div>
-                }
-                {loading && <div></div> || renderedTeasers.map(this.renderTeasers)}
-            </main>
+            <div>
+                <header className="header">
+                    <a className="header__logo-link" href="http://developer.nytimes.com/"><img className="header__logo-image"src="img/poweredby_nytimes_200a.png" /></a>
+                    <Datepicker getData={this.getData} />
+                    <KeywordSelect keywords={allKeywords} filterTeasers={this.filterTeasers} clearFilter={this.clearFilter} />
+                </header>
+                <main className="main">
+                    {loading && ('Loading, please wait ...') || renderedTeasers.map(this.renderTeasers)}
+                </main>
+            </div>
         );
     }
 }

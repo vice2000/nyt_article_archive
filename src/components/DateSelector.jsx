@@ -30,7 +30,6 @@ class DateSelector extends React.Component {
     render() {
         return (
             <input
-                className="datepicker__month"
                 min="1851-09"
                 max={this.set_max_date()}
                 name="date"

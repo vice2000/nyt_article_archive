@@ -1,0 +1,36 @@
+@mixin respond-min($width) {
+  @media screen and (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin respond-max($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin on-interaction {
+  &:hover,
+  &:focus,
+  &:active {
+    @content;
+  }
+}
+
+@mixin font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@mixin visuallyhidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}

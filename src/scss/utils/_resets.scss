@@ -1,0 +1,30 @@
+ul {
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+figure,
+p,
+ul {
+  margin: 0;
+}
+
+input,
+select {
+  border: none;
+  background: transparent;
+  appearance: none;
+}

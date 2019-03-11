@@ -1,37 +1,22 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-const config = (env) => {
-    const devMode = env === 'development';
-    const prodMode = env === 'production';
+const config = () => {
+    const isDevelopment = process.env.NODE_ENV === 'development';
     const publicPath = resolve('public/');
-    const bundleCss = new ExtractTextPlugin('bundle.css');
 
-    const htmlSinglePage = new HtmlWebpackPlugin({
-        filename: 'index.html',
-        template: resolve('src/index.html'),
-        hash: true,
-    });
-
-    const styleLoader = [
-        'css-loader',
-        'postcss-loader',
-        'sass-loader',
-    ];
-
-    const eslintRules = devMode ? {} : {
+    const eslintRules = isDevelopment ? {} : {
         'no-console': [2, { allow: ['warn', 'error'] }],
     };
 
     return {
-        devtool: devMode
-            ? 'cheap-module-source-map'
-            : 'hidden-source-map',
+        devtool: isDevelopment ? 'inline-source-map' : '',
         resolve: { extensions: ['.js', '.jsx'] },
         context: resolve(__dirname, 'src'),
         entry: './index.js',
-        watch: devMode,
+        watch: isDevelopment,
         watchOptions: {
             ignored: /(node_modules)/,
             aggregateTimeout: 300,
@@ -46,7 +31,6 @@ const config = (env) => {
                     loader: 'eslint-loader',
                     options: {
                         fix: true,
-                        failOnError: prodMode,
                         rules: eslintRules,
                     },
                 },
@@ -56,9 +40,29 @@ const config = (env) => {
                     use: 'babel-loader',
                 },
                 {
-                    exclude: /node_modules/,
                     test: /\.s*css$/,
-                    use: bundleCss.extract(styleLoader),
+                    use: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: [
+                            {
+                                loader: 'css-loader',
+                                options: { sourceMap: isDevelopment }
+                            },
+                            {
+                                loader: 'postcss-loader',
+                                options: {
+                                    plugins: () => [require('autoprefixer')({
+                                        'browsers': ['> 1%', 'last 2 versions']
+                                    })],
+                                    sourceMap: isDevelopment
+                                }
+                            },
+                            {
+                                loader: 'sass-loader',
+                                options: { sourceMap: isDevelopment }
+                            }
+                        ]
+                    })
                 },
                 {
                     exclude: /node_modules/,
@@ -78,7 +82,13 @@ const config = (env) => {
             publicPath: '/',
         },
         plugins: [
-            htmlSinglePage
+            new CleanWebpackPlugin(),
+            new HtmlWebpackPlugin({
+                filename: 'index.html',
+                template: resolve('src/index.html')
+            }),
+            new ExtractTextPlugin('css/styles.css'),
+
         ]
     };
 

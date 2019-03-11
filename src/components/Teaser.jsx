@@ -8,7 +8,7 @@ class Teaser extends React.Component {
         // replace "-" in date string so Safari mobile can parse it
         const date = new Date(pub_date.match(/\d{4}-\d{2}-\d{2}/g).join().replace(/-/g, '/'));
         return(
-            <article>
+            <article className="teaser">
                 <h2><a href={link}>{headline.main}</a></h2>
                 <small>{date.getFullYear()}-{date.getMonth()+1}-{date.getDate()}</small>
                 <p>{snippet}</p>

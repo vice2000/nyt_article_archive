@@ -19,17 +19,16 @@ class Datepicker extends React.Component {
         return (
             <form
                 action="/"
-                className="datepicker"
+                className="header__datepicker"
                 method="POST"
                 onSubmit={this.handleSubmit}
             >
                 <DateSelector
                     date={this.setRequestDate}
                 />
-                <input
+                <button
                     type="submit"
-                    value="GO!"
-                />
+                >Search!</button>
             </form>
         );
     }

@@ -1,0 +1,27 @@
+.teaser {
+  flex-basis: 100%;
+  padding-bottom: rem(16px);
+  margin-left: auto;
+  margin-right: auto;
+
+  &:not(:last-of-type) {
+    margin-bottom: rem(12px);
+    border-bottom: 1px solid $color-grey-light;
+
+    @include respond-min($breakpoint-desktop) {
+      border: none;
+    }
+  }
+
+  @include respond-min($breakpoint-tablet) {
+    flex-basis: 45%;
+  }
+
+  &__headline {
+    font-size: rem(24px);
+    font-weight: $font-weight-normal;
+    line-height: rem(32px);
+    margin: rem(12px);
+    color: $color-slate-dark;
+  }
+}

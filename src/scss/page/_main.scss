@@ -1,0 +1,16 @@
+.main {
+  padding: rem(8px);
+  display: flex;
+  flex-wrap: wrap;
+
+  @include respond-min($breakpoint-tablet) {
+    padding: rem(16px);
+  }
+
+  // align last teaser to implicit grid
+  &::after {
+    content: "";
+    flex-basis: 45%;
+    margin: 0 auto;
+  }
+}

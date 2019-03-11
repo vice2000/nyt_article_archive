@@ -1,0 +1,12 @@
+// prerequisites
+@import 'fonts';
+@import 'colors';
+@import 'utils/functions';
+@import 'constants';
+@import 'utils/mixins';
+@import 'utils/resets';
+@import 'defaults';
+// layout components
+@import 'page/header';
+@import 'page/main';
+@import 'page/teaser';
