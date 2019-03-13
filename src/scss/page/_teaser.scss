@@ -1,16 +1,16 @@
 .teaser {
   flex-basis: 100%;
-  padding-bottom: rem(16px);
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+  padding-bottom: rem(16px);
+
+  @include respond-min($breakpoint-tablet) {
+    flex-basis: 45%;
+  }
 
   &:not(:last-of-type) {
     margin-bottom: rem(12px);
     border-bottom: 1px solid $color-grey-light;
-  }
-
-  @include respond-min($breakpoint-tablet) {
-    flex-basis: 45%;
   }
 
   &__headline {

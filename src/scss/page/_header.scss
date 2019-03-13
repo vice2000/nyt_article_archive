@@ -1,13 +1,13 @@
 .header {
   font-size: rem(18px);
-  min-height: rem(60px);
-  color: $color-text-bright;
-  border-bottom: rem(1px) solid rgba(255, 255, 255, 0.5);
-  background-color: $color-skyblue;
   display: block;
   align-items: center;
   justify-content: space-between;
+  min-height: rem(60px);
   padding: rem(8px);
+  color: $color-text-bright;
+  border-bottom: rem(1px) solid rgba(255, 255, 255, 0.5);
+  background-color: $color-skyblue;
 
   @include font-smoothing;
 
@@ -18,12 +18,12 @@
   &__datepicker,
   &__keywordfilter {
     @include respond-min($breakpoint-tablet) {
-      flex: 1;
       display: flex;
+      align-items: baseline;
+      flex: 1;
       flex-basis: auto;
       flex-wrap: wrap;
       padding: 0;
-      align-items: baseline;
     }
   }
 
@@ -42,15 +42,20 @@
   }
 
   &__input {
-    color: $color-slate-dark;
     font-weight: $font-weight-semibold;
-    background-color: $color-grey-lighter;
-    border-radius: rem(2px);
-    height: rem(20px);
     width: rem(200px);
-    padding-left: rem(4px);
+    height: rem(20px);
     margin-right: rem(12px);
     margin-bottom: rem(8px);
+    padding-left: rem(4px);
+    color: $color-slate-dark;
+    border-radius: rem(2px);
+    background-color: $color-grey-lighter;
+
+    @include respond-min($breakpoint-tablet) {
+      margin-right: rem(12px);
+      margin-left: rem(12px);
+    }
 
     &--stretched {
       // equalize 4px padding added by input[type="month"]
@@ -59,11 +64,6 @@
 
     &--inactive {
       color: lighten($color-slate-dark, 45%);
-    }
-
-    @include respond-min($breakpoint-tablet) {
-      margin-left: rem(12px);
-      margin-right: rem(12px);
     }
 
     &:invalid {
@@ -87,11 +87,11 @@
   }
 
   &__button {
-    color: $color-white;
     font-weight: $font-weight-semibold;
-    border-radius: rem(4px);
-    padding: 0 rem(8px);
     height: rem(20px);
+    padding: 0 rem(8px);
+    color: $color-white;
+    border-radius: rem(4px);
     background-color: $color-slate;
 
     @include respond-min($breakpoint-tablet) {
