@@ -22,9 +22,13 @@ ul {
   margin: 0;
 }
 
+button,
+fieldset,
 input,
+legend,
 select {
+  padding: 0;
   border: none;
-  background: transparent;
+  background-color: transparent;
   appearance: none;
 }

@@ -7,6 +7,10 @@
     padding: rem(16px);
   }
 
+  &__heading {
+    margin: 0 auto;
+  }
+
   // align last teaser to implicit grid
   &::after {
     content: "";

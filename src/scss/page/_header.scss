@@ -14,6 +14,7 @@
   &__datepicker,
   &__keywordfilter {
     flex-basis: 100%;
+    display: flex;
 
     @include respond-min($breakpoint-tablet) {
       flex-basis: auto;
@@ -23,5 +24,14 @@
   &__logo-link,
   &__logo-image {
     height: rem(30px);
+  }
+
+  &__datepicker-input {
+    background-color: $color-grey-lighter;
+  }
+
+  &__datepicker-legend {
+    font-size: rem(14px);
+    font-weight: $font-weight-semibold;
   }
 }

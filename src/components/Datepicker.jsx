@@ -12,7 +12,9 @@ class Datepicker extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.getData( this.state.date );
+        if (this.state.date) {
+            this.props.getData( this.state.date );
+        }
     }
 
     render () {

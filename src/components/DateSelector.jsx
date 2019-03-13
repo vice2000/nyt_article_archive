@@ -29,14 +29,19 @@ class DateSelector extends React.Component {
 
     render() {
         return (
-            <input
-                min="1851-09"
-                max={this.set_max_date()}
-                name="date"
-                type="month"
-                onChange={this.handleChange}
-                placeholder="Type in year and month, e.g. '2019-03'"
-            />
+            <fieldset>
+                <legend className="header__datepicker-legend">Select Year and Month</legend>
+                <input
+                    min="1851-09"
+                    max={this.set_max_date()}
+                    name="date"
+                    type="month"
+                    onChange={this.handleChange}
+                    placeholder="Type in year and month, e.g. '2019-03'"
+                    className="header__datepicker-input"
+                    id="dateSelector"
+                />
+            </fieldset>
         );
     }
     
