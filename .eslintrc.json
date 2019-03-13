@@ -35,7 +35,8 @@
         "no-console": [
             "error",
             { "allow": ["warn","error"]}
-        ]
+        ],
+        "object-curly-spacing": ["error", "always"]
     },
     "globals": {
       "__dirname": true,
