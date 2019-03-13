@@ -7,10 +7,6 @@
   &:not(:last-of-type) {
     margin-bottom: rem(12px);
     border-bottom: 1px solid $color-grey-light;
-
-    @include respond-min($breakpoint-desktop) {
-      border: none;
-    }
   }
 
   @include respond-min($breakpoint-tablet) {

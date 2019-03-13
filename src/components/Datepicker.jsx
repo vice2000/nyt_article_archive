@@ -30,6 +30,7 @@ class Datepicker extends React.Component {
                 />
                 <button
                     type="submit"
+                    className="header__button"
                 >Search!</button>
             </form>
         );

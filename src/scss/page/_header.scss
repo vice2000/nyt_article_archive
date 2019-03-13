@@ -4,34 +4,95 @@
   color: $color-text-bright;
   border-bottom: rem(1px) solid rgba(255, 255, 255, 0.5);
   background-color: $color-skyblue;
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  padding: rem(16px) rem(8px) rem(8px);
 
   @include font-smoothing;
 
+  @include respond-min($breakpoint-tablet) {
+    display: flex;
+  }
+
   &__datepicker,
   &__keywordfilter {
-    flex-basis: 100%;
-    display: flex;
-
     @include respond-min($breakpoint-tablet) {
+      flex: 1;
+      display: flex;
       flex-basis: auto;
+      flex-wrap: wrap;
+      padding: 0;
+      align-items: baseline;
     }
   }
 
   &__logo-link,
   &__logo-image {
     height: rem(30px);
+    margin-right: rem(32px);
+    margin-bottom: rem(24px);
   }
 
-  &__datepicker-input {
+  &__fieldset {
+    display: inline;
+  }
+
+  &__input {
+    color: $color-slate-dark;
+    font-weight: $font-weight-semibold;
     background-color: $color-grey-lighter;
+    border-radius: rem(2px);
+    height: rem(20px);
+    width: rem(200px);
+    padding-left: rem(4px);
+    margin-right: rem(12px);
+    margin-bottom: rem(8px);
+
+    &--stretched {
+      // equalize 4px padding added by input[type="month"]
+      width: rem(204px);
+    }
+
+    &--inactive {
+      color: lighten($color-slate-dark, 45%);
+    }
+
+    @include respond-min($breakpoint-tablet) {
+      margin-left: rem(12px);
+      margin-right: rem(12px);
+    }
+
+    &:invalid {
+      background-color: lighten($color-grape, 20%);
+
+      &:focus {
+        background-color: $color-grey-lighter;
+      }
+    }
   }
 
-  &__datepicker-legend {
+  &__label {
     font-size: rem(14px);
     font-weight: $font-weight-semibold;
+    display: block;
+
+    @include respond-min($breakpoint-tablet) {
+      display: inline;
+      margin-left: rem(12px);
+    }
+  }
+
+  &__button {
+    color: $color-white;
+    font-weight: $font-weight-semibold;
+    border-radius: rem(4px);
+    padding: 0 rem(8px);
+    height: rem(20px);
+    background-color: $color-slate;
+
+    @include respond-min($breakpoint-tablet) {
+      margin-left: rem(12px);
+    }
   }
 }

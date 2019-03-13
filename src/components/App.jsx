@@ -119,7 +119,7 @@ class App extends React.Component {
                     <KeywordSelect keywords={allKeywords} filterTeasers={this.filterTeasers} clearFilter={this.clearFilter} />
                 </header>
                 <main className="main">
-                    {renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || (loading && ('Loading, please wait ...') || renderedTeasers.length > 0 && renderedTeasers.map(this.renderTeasers)) }
+                    { loading && ('Loading, please wait ...') || renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || renderedTeasers.length > 0 && renderedTeasers.map(this.renderTeasers) }
                 </main>
             </div>
         );
