@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class DateSelector extends React.Component {
 
-    state = {};
+    state = {}
 
     set_max_date() {
         let today = new Date();
@@ -29,8 +29,8 @@ class DateSelector extends React.Component {
 
     render() {
         return (
-            <fieldset>
-                <legend className="header__datepicker-legend">Select Year and Month</legend>
+            <fieldset className="header__fieldset">
+                <label className="header__label" htmlFor="dateSelector">Select Year and Month</label>
                 <input
                     min="1851-09"
                     max={this.set_max_date()}
@@ -38,8 +38,10 @@ class DateSelector extends React.Component {
                     type="month"
                     onChange={this.handleChange}
                     placeholder="Type in year and month, e.g. '2019-03'"
-                    className="header__datepicker-input"
+                    className="header__input"
                     id="dateSelector"
+                    required
+                    pattern="\d{4}-\d{2}"
                 />
             </fieldset>
         );
