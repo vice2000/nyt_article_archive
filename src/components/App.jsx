@@ -114,7 +114,7 @@ class App extends React.Component {
         return (
             <div>
                 <header className="header">
-                    <a className="header__logo-link" href="http://developer.nytimes.com/"><img className="header__logo-image"src="img/poweredby_nytimes_200a.png" /></a>
+                    <a className="header__logo-link" href="http://developer.nytimes.com/"><img className="header__logo-image" src="img/poweredby_nytimes_200a.png" alt="nytimes api logo"/></a>
                     <Datepicker getData={this.getData} />
                     <KeywordSelect keywords={allKeywords} filterTeasers={this.filterTeasers} clearFilter={this.clearFilter} />
                 </header>
