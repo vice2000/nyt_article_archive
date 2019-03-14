@@ -18,7 +18,9 @@ class Header extends React.Component {
         const { expanded } = this.state;
         const { allKeywords, filterTeasers, getData, clearFilter } = this.props;
         return(
-            <header className="header">
+            <header className="header"
+                data-expanded={expanded}
+            >
                 <a className="header__logo-link" href="http://developer.nytimes.com/">
                     <img 
                         className="header__logo-image"
