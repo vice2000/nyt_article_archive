@@ -66,7 +66,7 @@ const config = () => {
                 },
                 {
                     exclude: /node_modules/,
-                    test: /\.(png|jpg)$/,
+                    test: /\.(png|jpg|svg)$/,
                     use: 'file-loader?name=[path][name].[ext]',
                 },
                 {
