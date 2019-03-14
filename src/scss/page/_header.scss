@@ -73,7 +73,8 @@
 
     &--stretched {
       // equalize 4px padding added by input[type="month"]
-      width: rem(204px);
+      width: rem(208px);
+      height: rem(22px);
     }
 
     &--inactive {
@@ -93,6 +94,7 @@
     font-size: rem(14px);
     font-weight: $font-weight-semibold;
     display: block;
+    margin-left: rem(2px);
 
     @include respond-min($breakpoint-tablet) {
       display: inline;
