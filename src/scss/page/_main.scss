@@ -1,12 +1,12 @@
 .main {
   display: flex;
   flex-wrap: wrap;
-  padding: rem(8px);
   margin-top: rem(48px);
+  padding: rem(8px);
 
   @include respond-min($breakpoint-tablet) {
-    padding: rem(16px);
     margin-top: rem(88px);
+    padding: rem(16px);
   }
 
   @include respond-min($breakpoint-desktop) {
@@ -30,6 +30,6 @@
   }
 }
 
-[data-expanded="true"] + .main {
+[data-expanded='true'] + .main {
   margin-top: rem(170px);
 }
