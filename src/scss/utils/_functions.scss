@@ -1,3 +1,7 @@
 @function rem($px) {
   @return $px/$base-font-size * 1rem;
 }
+
+@function rgb-opacity($color, $opacity) {
+  @return rgba($color, $opacity);
+}
