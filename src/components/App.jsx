@@ -1,6 +1,6 @@
 import React from 'react';
 import Ajax from '../utils/Ajax';
-import dedupeArray from '../utils/dedupeArray';
+import sortKeywords from '../utils/sortKeywords';
 import Teaser from './Teaser';
 import localforage from 'localforage';
 import Header from './Header';
@@ -103,7 +103,7 @@ class App extends React.Component {
                 allKeywords.push(value);
             }
         });
-        return dedupeArray(allKeywords);
+        return sortKeywords(allKeywords);
     }
 
     filterTeasers = (keyword) => {
