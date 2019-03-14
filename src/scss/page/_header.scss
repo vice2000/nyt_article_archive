@@ -1,22 +1,26 @@
 .header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
   font-size: rem(18px);
-  display: block;
-  align-items: center;
-  justify-content: space-between;
-  min-height: rem(60px);
+  display: flex;
+  flex-direction: column;
   padding: rem(8px);
   color: $color-text-bright;
   border-bottom: rem(1px) solid rgba(255, 255, 255, 0.5);
-  background-color: $color-skyblue;
+  background-color: rgb-opacity($color-skyblue, 0.97);
 
   @include font-smoothing;
 
   @include respond-min($breakpoint-tablet) {
-    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__datepicker,
   &__keywordfilter {
+    transition: 0.5s ease;
     @include respond-min($breakpoint-tablet) {
       display: flex;
       align-items: baseline;
@@ -25,16 +29,24 @@
       flex-wrap: wrap;
       padding: 0;
     }
+
+    &--hidden {
+      @include respond-max($breakpoint-tablet) {
+        display: none;
+      }
+    }
+  }
+
+  &__datepicker {
+    @include respond-max($breakpoint-tablet) {
+      margin-top: rem(18px);
+    }
   }
 
   &__logo-link,
   &__logo-image {
     height: rem(30px);
     margin-right: rem(32px);
-
-    @include respond-max($breakpoint-tablet) {
-      margin-bottom: rem(24px);
-    }
   }
 
   &__fieldset {
@@ -49,8 +61,9 @@
     margin-bottom: rem(8px);
     padding-left: rem(4px);
     color: $color-slate-dark;
-    border-radius: rem(2px);
+    border-radius: rem(4px);
     background-color: $color-grey-lighter;
+    border: rem(2px) solid darken($color-skyblue, 5%);
 
     @include respond-min($breakpoint-tablet) {
       margin-right: rem(12px);
@@ -87,15 +100,46 @@
   }
 
   &__button {
-    font-weight: $font-weight-semibold;
+    font-weight: $font-weight-bold;
     height: rem(20px);
     padding: 0 rem(8px);
-    color: $color-white;
-    border-radius: rem(4px);
-    background-color: $color-slate;
+    color: $color-skyblue;
+    border-radius: rem(10px);
+    background-color: $color-grey-lighter;
+    border: rem(2px) solid darken($color-skyblue, 5%);
+    transition: 0.2s ease;
 
     @include respond-min($breakpoint-tablet) {
       margin-left: rem(12px);
+    }
+
+    @include on-interaction {
+      color: $color-white;
+      background-color: lighten($color-skyblue, 10%);
+    }
+  }
+
+  &__menu-toggle {
+    position: absolute;
+    top: rem(8px);
+    right: rem(24px);
+    display: inline-block;
+    width: rem(32px);
+    height: rem(32px);
+    color: $color-white;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @include respond-min($breakpoint-tablet) {
+      display: none;
+    }
+
+    &[aria-expanded=false] {
+      background-image: url('/img/icon_menu.svg');
+    }
+
+    &[aria-expanded=true] {
+      background-image: url('/img/icon_close.svg');
     }
   }
 }

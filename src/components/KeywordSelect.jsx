@@ -25,8 +25,12 @@ class KeywordSelect extends React.Component {
     render() {
         const { keywords } = this.props;
         const inactiveClass = this.state.value ? '' : 'header__input--inactive';
+        const expandedClass = this.props.expanded ? '' : 'header__keywordfilter--hidden';
         return (
-            <form className="header__keywordfilter" onSubmit={this.handleSubmit}>
+            <form 
+                className={'header__keywordfilter ' + expandedClass} 
+                onSubmit={this.handleSubmit}
+            >
                 <fieldset className="header__fieldset">
                     <label className="header__label" htmlFor="keywordselect">Filter by single Keyword</label>
                     <select
@@ -53,7 +57,8 @@ class KeywordSelect extends React.Component {
 KeywordSelect.propTypes = {
     keywords: PropTypes.array,
     filterTeasers: PropTypes.func,
-    clearFilter: PropTypes.func
+    clearFilter: PropTypes.func,
+    expanded: PropTypes.bool
 };
 
 export default KeywordSelect;

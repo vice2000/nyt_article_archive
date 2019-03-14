@@ -18,10 +18,11 @@ class Datepicker extends React.Component {
     }
 
     render () {
+        const expandedClass = this.props.expanded ? '' : 'header__datepicker--hidden';
         return (
             <form
                 action="/"
-                className="header__datepicker"
+                className={'header__datepicker ' + expandedClass}
                 method="POST"
                 onSubmit={this.handleSubmit}
             >
@@ -38,7 +39,8 @@ class Datepicker extends React.Component {
 }
 
 Datepicker.propTypes = {
-    getData: PropTypes.func
+    getData: PropTypes.func,
+    expanded: PropTypes.bool
 };
 
 export default Datepicker;
