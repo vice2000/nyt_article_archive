@@ -4,6 +4,7 @@
   margin-left: auto;
   padding-bottom: rem(16px);
 
+
   @include respond-min($breakpoint-tablet) {
     flex-basis: 45%;
   }
@@ -15,9 +16,20 @@
 
   &__headline {
     font-size: rem(24px);
-    font-weight: $font-weight-normal;
-    line-height: rem(32px);
-    margin: rem(12px);
+    font-weight: $font-weight-semibold;
     color: $color-slate-dark;
+  }
+
+  &__date {
+    line-height: rem(20px);
+    font-style: italic;
+  }
+
+  &__snippet {
+    margin: rem(12px) 0;
+  }
+
+  &__keywords {
+    font-weight: $font-weight-semibold;
   }
 }

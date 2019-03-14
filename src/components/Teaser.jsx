@@ -9,10 +9,10 @@ class Teaser extends React.Component {
         const date = new Date(pub_date.match(/\d{4}-\d{2}-\d{2}/g).join().replace(/-/g, '/'));
         return(
             <article className="teaser">
-                <h2><a href={link}>{headline.main}</a></h2>
-                <small>{date.getFullYear()}-{date.getMonth()+1}-{date.getDate()}</small>
-                <p>{snippet}</p>
-                <small>{keywords.join(' | ')}</small>
+                <h2 className="teaser__headline"><a href={link}>{headline.main}</a></h2>
+                <small className="teaser__date">{date.getFullYear()}-{date.getMonth()+1}-{date.getDate()}</small>
+                <p className="teaser__snippet">{snippet}</p>
+                <small className="teaser__keywords">{keywords.join(' | ')}</small>
             </article>
         );
     }
