@@ -1,10 +1,10 @@
 import React from 'react';
 import Ajax from '../utils/Ajax';
 import dedupeArray from '../utils/dedupeArray';
-import Datepicker from './Datepicker';
 import Teaser from './Teaser';
 import localforage from 'localforage';
-import KeywordSelect from './KeywordSelect';
+import Header from './Header';
+
 
 class App extends React.Component {
 
@@ -113,13 +113,14 @@ class App extends React.Component {
         const { loading, renderedTeasers, allKeywords } = this.state;
         return (
             <div>
-                <header className="header">
-                    <a className="header__logo-link" href="http://developer.nytimes.com/"><img className="header__logo-image" src="img/poweredby_nytimes_200a.png" alt="nytimes api logo"/></a>
-                    <Datepicker getData={this.getData} />
-                    <KeywordSelect keywords={allKeywords} filterTeasers={this.filterTeasers} clearFilter={this.clearFilter} />
-                </header>
+                <Header
+                    allKeywords={allKeywords}
+                    getData={this.getData}
+                    filterTeasers={this.filterTeasers}
+                    clearFilter={this.clearFilter}
+                />
                 <main className="main">
-                    { loading && ('Loading, please wait ...') || renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || renderedTeasers.length > 0 && renderedTeasers.map(this.renderTeasers) }
+                    {loading && ('Loading, please wait ...') || renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || renderedTeasers.length > 0 && renderedTeasers.map(this.renderTeasers)}
                 </main>
             </div>
         );
