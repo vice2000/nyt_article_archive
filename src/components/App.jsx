@@ -46,20 +46,28 @@ class App extends React.Component {
     }
 
     getHTTP = async (date) => {
-        const result = await Ajax.post('/', date);
-        this.receiveTeasers(JSON.parse(result), date);
+        try {
+            const result = await Ajax.post('/', date);
+            this.receiveTeasers(JSON.parse(result), date);
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     getIndexedDB = async (key) => {
-        const result = await localforage.getItem(key);
-        this.setState(
-            {   
-                receivedTeasers: result.teasers,
-                renderedTeasers: result.teasers,
-                allKeywords: result.allKeywords,
-                loading: false 
-            }
-        );
+        try {
+            const result = await localforage.getItem(key);
+            this.setState(
+                {   
+                    receivedTeasers: result.teasers,
+                    renderedTeasers: result.teasers,
+                    allKeywords: result.allKeywords,
+                    loading: false 
+                }
+            );
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     receiveTeasers = (data, date) => {
@@ -80,8 +88,12 @@ class App extends React.Component {
     createIndexedDbStorage = async (storageData, date) => {
         const { teasers, allKeywords } = storageData;
         const indexedDB_key = `${date.year}_${date.month}`;
-        await localforage.setItem(indexedDB_key, storageData);
-        this.setState({ receivedTeasers: teasers, renderedTeasers: teasers, allKeywords, loading: false });
+        try {
+            await localforage.setItem(indexedDB_key, storageData);
+            this.setState({ receivedTeasers: teasers, renderedTeasers: teasers, allKeywords, loading: false });
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     extractKeywords (teasers) {
