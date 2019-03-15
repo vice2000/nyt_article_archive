@@ -20,8 +20,8 @@ class DateSelector extends React.Component {
         let raw_date = e.currentTarget.value;
         let date_str = raw_date.split('-');
 
-        date.year = date_str[0];
-        date.month = parseInt(date_str[1], 10); // strip leading zero
+        date.year =  date_str[0];
+        date.month = String(parseInt(date_str[1], 10)); // strip leading zero
         
         this.props.date(date);
 

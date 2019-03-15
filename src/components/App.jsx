@@ -17,6 +17,24 @@ class App extends React.Component {
         allKeywords: []
     };
 
+    componentDidMount() {
+        this.evaluateUrlParam();
+
+    }
+
+    evaluateUrlParam = () => {
+        // infer date for request body from url param
+        let apiDate = {};
+        let indexedDbKey = '';
+        // check if param is a valid idb key at all
+        if(window.location.search.match(/\?\d{4}_\d{1}/g)) {
+            indexedDbKey = window.location.search.replace(/\?/g, '');
+            apiDate.year = indexedDbKey.split('_')[0];
+            apiDate.month = indexedDbKey.split('_')[1];
+            this.checkIndexedDbKey(indexedDbKey, apiDate);
+        }
+    }
+
     renderTeasers(teaser, count) {
         const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
         return (
