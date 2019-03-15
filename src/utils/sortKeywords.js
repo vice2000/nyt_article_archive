@@ -16,7 +16,9 @@ export default function sortKeywords(array) {
 
     for (let key in unique) {
         const value = unique[key];
-        arrayToSort.push({ keyword: key, count: value });
+        // pass the count as string literal in the actual keyword 
+        // to be displayed in the select options
+        arrayToSort.push({ keyword: `${key} (${value})`, count: value });
     }
 
     ordered = orderBy(arrayToSort, ['count', 'keyword'], ['desc', 'asc']);

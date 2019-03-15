@@ -10,7 +10,9 @@ class KeywordSelect extends React.Component {
     }
 
     onChange = (e) => {
-        const { value } = e.target;
+        // replace count passed as string literal
+        // in the actual keyword
+        const value = e.target.value.replace(/(\s\(\d+\))$/,'');
         this.props.filterTeasers(value);
         this.setState({ value });
     }
