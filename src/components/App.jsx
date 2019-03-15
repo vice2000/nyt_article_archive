@@ -32,12 +32,12 @@ class App extends React.Component {
     }
 
     getData = (date) => {
-        const indexedDB_key = `${date.year}_${date.month}`;
+        const indexedDb_key = `${date.year}_${date.month}`;
         this.setState({ loading: true });
         localforage.keys().then(
             keys => {
-                if (keys.indexOf(indexedDB_key) > -1) {
-                    this.getIndexedDB(indexedDB_key);
+                if (keys.indexOf(indexedDb_key) > -1) {
+                    this.checkIndexedDbKey(indexedDb_key, date);
                 } else {
                     this.getHTTP(date);
                 }
@@ -54,24 +54,35 @@ class App extends React.Component {
         }
     }
 
-    getIndexedDB = async (key) => {
+    checkIndexedDbKey = async (indexedDbKey, date) => {
+        let now = new Date().getTime();
         try {
-            const result = await localforage.getItem(key);
-            this.setState(
-                {   
-                    receivedTeasers: result.teasers,
-                    renderedTeasers: result.teasers,
-                    allKeywords: result.allKeywords,
-                    loading: false 
-                }
-            );
+            const result = await localforage.getItem(indexedDbKey);
+            // check if IDB entry is older than one hour
+            if (now - result.createdAt <= 3600000) {
+                // if not, use entries to render teasers
+                this.setState(
+                    {
+                        receivedTeasers: result.teasers,
+                        renderedTeasers: result.teasers,
+                        allKeywords: result.allKeywords,
+                        loading: false 
+                    }
+                );
+            } else {
+                // if so, throw it away and get fresh data via api request
+                await localforage.removeItem(indexedDbKey);
+                this.getHTTP(date);
+            }
         } catch (error) {
             console.error(error);
         }
+
     }
 
     receiveTeasers = (data, date) => {
         const items = data.response.docs;
+        const createdAt = new Date().getTime();
         let teasers = [];
 
         items.map(item => {
@@ -82,7 +93,7 @@ class App extends React.Component {
                 { _id, headline, web_url, snippet, pub_date, keywordValues }
             );
         });
-        this.createIndexedDbStorage({ teasers, allKeywords: this.extractKeywords(teasers) }, date);
+        this.createIndexedDbStorage({ createdAt, teasers, allKeywords: this.extractKeywords(teasers) }, date);
     }
 
     createIndexedDbStorage = async (storageData, date) => {
