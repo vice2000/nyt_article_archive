@@ -74,7 +74,7 @@
     &--stretched {
       // equalize 4px padding added by input[type="month"]
       width: rem(208px);
-      height: rem(22px);
+      height: rem(24px);
     }
 
     &--inactive {
@@ -133,7 +133,7 @@
     background-repeat: no-repeat;
     background-size: contain;
 
-    @include respond-min($breakpoint-tablet) {
+    @include respond-min($breakpoint-tablet + rem(1px)) {
       display: none;
     }
 
