@@ -25,9 +25,10 @@ class KeywordSelect extends React.Component {
     }
 
     render() {
-        const { keywords } = this.props;
-        const inactiveClass = this.state.value ? '' : 'header__input--inactive';
-        const expandedClass = this.props.expanded ? '' : 'header__keywordfilter--hidden';
+        const { expanded, keywords, filterKeyword } = this.props;
+        const { value, initialValue } = this.state;
+        const modifierClass = value || filterKeyword ? '' : 'header__input--inactive';
+        const expandedClass = expanded ? '' : 'header__keywordfilter--hidden';
         return (
             <form 
                 className={'header__keywordfilter ' + expandedClass} 
@@ -37,15 +38,15 @@ class KeywordSelect extends React.Component {
                     <label className="header__label" htmlFor="keywordselect">Filter by single Keyword</label>
                     <select
                         id="keywordselect"
-                        className={'header__input header__input--stretched ' + inactiveClass}
+                        className={'header__input header__input--stretched ' + modifierClass}
                         onChange={this.onChange}
-                        value={this.state.value || this.state.initialValue}
+                        value={filterKeyword || value || initialValue}
                     >
                         <option
                             disabled
-                            value="Select Keyword"
+                            value={filterKeyword || initialValue}
                         >
-                        Select Keyword
+                            {filterKeyword || initialValue}
                         </option>
                         {keywords.map(keyword => <option key={keyword} name={keyword} value={keyword}>{keyword}</option>)} 
                     </select>
@@ -60,7 +61,8 @@ KeywordSelect.propTypes = {
     keywords: PropTypes.array,
     filterTeasers: PropTypes.func,
     clearFilter: PropTypes.func,
-    expanded: PropTypes.bool
+    expanded: PropTypes.bool,
+    filterKeyword: PropTypes.string
 };
 
 export default KeywordSelect;

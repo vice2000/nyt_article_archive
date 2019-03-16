@@ -35,21 +35,6 @@ class App extends React.Component {
         }
     }
 
-    renderTeasers(teaser, count) {
-        const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
-        return (
-            <Teaser
-                id={_id}
-                key={`${_id}_${count}`}
-                headline={headline}
-                pub_date={pub_date}
-                snippet={snippet}
-                keywords={keywordValues}
-                link={web_url}
-            />
-        );
-    }
-
     getData = (date) => {
         const indexedDb_key = `${date.year}_${date.month}`;
         this.setState({ loading: true });
@@ -148,11 +133,11 @@ class App extends React.Component {
     }
 
     clearFilter = () => {
-        this.setState({ renderedTeasers: this.state.receivedTeasers, filterKeyword: false });
+        this.setState({ renderedTeasers: this.state.receivedTeasers, filterKeyword: '' });
     }
 
     render () {
-        const { loading, renderedTeasers, allKeywords } = this.state;
+        const { loading, renderedTeasers, allKeywords, filterKeyword } = this.state;
         return (
             <div>
                 <Header
@@ -160,9 +145,26 @@ class App extends React.Component {
                     getData={this.getData}
                     filterTeasers={this.filterTeasers}
                     clearFilter={this.clearFilter}
+                    filterKeyword={filterKeyword}
                 />
                 <main className="main">
-                    {loading && ('Loading, please wait ...') || renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || renderedTeasers.length > 0 && renderedTeasers.map(this.renderTeasers)}
+                    {loading && ('Loading, please wait ...') || renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || renderedTeasers.length > 0 &&
+                    renderedTeasers.map((teaser, index) => {
+                        const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
+                        return (
+                            <Teaser
+                                id={_id}
+                                key={`${_id}_${index}`}
+                                headline={headline}
+                                pub_date={pub_date}
+                                snippet={snippet}
+                                keywords={keywordValues}
+                                link={web_url}
+                                filterTeasers={this.filterTeasers}
+                            />
+                        );
+                    })
+                    }
                 </main>
             </div>
         );

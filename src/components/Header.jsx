@@ -16,7 +16,7 @@ class Header extends React.Component {
 
     render () {
         const { expanded } = this.state;
-        const { allKeywords, filterTeasers, getData, clearFilter } = this.props;
+        const { allKeywords, filterTeasers, getData, clearFilter, filterKeyword } = this.props;
         return(
             <header className="header"
                 data-expanded={expanded}
@@ -35,6 +35,7 @@ class Header extends React.Component {
                     filterTeasers={filterTeasers}
                     clearFilter={clearFilter}
                     expanded={expanded}
+                    filterKeyword={filterKeyword}
                 />
                 <button
                     className="header__menu-toggle"
@@ -51,7 +52,8 @@ Header.propTypes = {
     allKeywords: PropTypes.array,
     getData: PropTypes.func,
     filterTeasers: PropTypes.func,
-    clearFilter: PropTypes.func
+    clearFilter: PropTypes.func,
+    filterKeyword: PropTypes.string
 };
 
 export default Header;

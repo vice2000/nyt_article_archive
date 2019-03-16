@@ -3,6 +3,7 @@
   margin-right: auto;
   margin-left: auto;
   padding-bottom: rem(16px);
+  color: $color-text-dark;
 
   @include respond-min($breakpoint-tablet) {
     flex-basis: 45%;
@@ -16,7 +17,6 @@
   &__headline {
     font-size: rem(24px);
     font-weight: $font-weight-semibold;
-    color: $color-slate-dark;
   }
 
   &__date {
@@ -28,7 +28,22 @@
     margin: rem(12px) 0;
   }
 
-  &__keywords {
+  &__link {
+    @include on-interaction {
+      text-decoration: underline;
+      color: $color-turqoise;
+    }
+  }
+
+  &__button {
     font-weight: $font-weight-semibold;
+    font-size: rem(14px);
+
+    &:not(:last-of-type) {
+      &::after {
+        content: "\2002|\2002";
+        display: inline-block;
+      }
+    }
   }
 }
