@@ -39,6 +39,7 @@ class App extends React.Component {
         const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
         return (
             <Teaser
+                id={_id}
                 key={`${_id}_${count}`}
                 headline={headline}
                 pub_date={pub_date}
