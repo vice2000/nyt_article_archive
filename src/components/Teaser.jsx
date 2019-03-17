@@ -12,6 +12,8 @@ class Teaser extends React.Component {
         }
     }
 
+    setClickedRef = node => this.clickedRef = node
+
     renderKeywords = (keyword, index) => {
         return (
             <button
@@ -32,7 +34,7 @@ class Teaser extends React.Component {
 
     handleKeywordClick = (e) => {
         const { filterTeasers } = this.props;
-        filterTeasers(e.target.textContent);
+        filterTeasers(e.target.textContent, this.clickedRef);
     }
 
     render() {
@@ -45,6 +47,7 @@ class Teaser extends React.Component {
             <article 
                 id={id}
                 className="teaser"
+                ref={this.setClickedRef}
             >
                 <h2
                     className="teaser__headline">

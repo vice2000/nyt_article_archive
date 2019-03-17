@@ -15,12 +15,28 @@ class App extends React.Component {
         receivedTeasers: [],
         renderedTeasers: [],
         allKeywords: [],
-        urlHash: ''
+        urlHash: '',
+        clickedRef: '',
+        scrollToClickedRef: false
     };
 
     componentDidMount() {
         this.evaluateUrlParam();
     }
+
+    componentDidUpdate() {
+        const { clickedRef, scrollToClickedRef } = this.state;
+        if (clickedRef && scrollToClickedRef) {
+            this.setState(
+                {
+                    clickedRef: '',
+                    scrollToClickedRef: false
+                },
+                clickedRef.scrollIntoView({ block: 'center', behavior: 'smooth' })
+            );
+        }
+    }
+
 
     evaluateUrlParam = () => {
         // infer date for request body from url param
@@ -129,9 +145,14 @@ class App extends React.Component {
         return sortKeywords(allKeywords);
     }
 
-    filterTeasers = (keyword) => {
+    filterTeasers = (keyword, clickedRef = '') => {
         let matchingTeasers = [];
-        this.setState({ filterKeyword: keyword });
+        this.setState(
+            {
+                filterKeyword: keyword,
+                clickedRef: clickedRef
+            }
+        );
         this.state.receivedTeasers.forEach(teaser => {
             if (teaser.keywordValues.includes(keyword)) {
                 matchingTeasers.push(teaser);
@@ -141,7 +162,13 @@ class App extends React.Component {
     }
 
     clearFilter = () => {
-        this.setState({ renderedTeasers: this.state.receivedTeasers, filterKeyword: '' });
+        this.setState(
+            {
+                renderedTeasers: this.state.receivedTeasers,
+                filterKeyword: '',
+                scrollToClickedRef: true
+            }
+        );
     }
 
     render () {
@@ -155,14 +182,14 @@ class App extends React.Component {
                     clearFilter={this.clearFilter}
                     filterKeyword={filterKeyword}
                 />
-                <main className="main" ref={this.setMainRef}>
+                <main className="main">
                     {loading && ('Loading, please wait ...') || renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || renderedTeasers.length > 0 &&
-                    renderedTeasers.map((teaser, index) => {
+                    renderedTeasers.map((teaser) => {
                         const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
                         return (
                             <Teaser
                                 id={_id}
-                                key={`${_id}_${index}`}
+                                key={`${_id}`}
                                 headline={headline}
                                 pub_date={pub_date}
                                 snippet={snippet}
