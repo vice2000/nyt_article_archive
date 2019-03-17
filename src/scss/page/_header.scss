@@ -8,11 +8,11 @@
   padding: rem(8px);
   color: $color-text-bright;
   border-bottom: rem(1px) solid rgba(255, 255, 255, 0.5);
-  background-color: rgb-opacity($color-skyblue, 0.95);
+  background-color: rgba($color-skyblue, 0.95);
 
   @include font-smoothing;
 
-  @include respond-min($breakpoint-tablet) {
+  @include respond-min($breakpoint-tablet + rem(1px)) {
     align-items: center;
     flex-direction: row;
     justify-content: space-between;
@@ -97,6 +97,11 @@
     margin-left: rem(2px);
 
     @include respond-min($breakpoint-tablet) {
+      display: inline-block;
+      width: rem(150px);
+    }
+
+    @include respond-min($breakpoint-tablet + rem(1px)) {
       display: inline;
       margin-left: rem(12px);
     }
