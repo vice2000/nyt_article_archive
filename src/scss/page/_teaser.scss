@@ -36,13 +36,13 @@
   }
 
   &__button {
-    font-weight: $font-weight-semibold;
     font-size: rem(14px);
+    font-weight: $font-weight-semibold;
 
     &:not(:last-of-type) {
       &::after {
-        content: "\2002|\2002";
         display: inline-block;
+        content: '\2002|\2002';
       }
     }
   }
