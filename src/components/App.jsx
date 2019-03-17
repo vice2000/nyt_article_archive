@@ -1,5 +1,6 @@
 import React from 'react';
 import Ajax from '../utils/Ajax';
+import dedupeTeasers from '../utils/dedupeTeasers';
 import sortKeywords from '../utils/sortKeywords';
 import Teaser from './Teaser';
 import localforage from 'localforage';
@@ -109,7 +110,7 @@ class App extends React.Component {
     }
 
     receiveTeasers = (data, date) => {
-        const items = data.response.docs;
+        const items = dedupeTeasers(data.response.docs);
         const createdAt = new Date().getTime();
         let teasers = [];
 
@@ -189,7 +190,7 @@ class App extends React.Component {
                         return (
                             <Teaser
                                 id={_id}
-                                key={`${_id}`}
+                                key={_id}
                                 headline={headline}
                                 pub_date={pub_date}
                                 snippet={snippet}
