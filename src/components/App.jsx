@@ -14,12 +14,12 @@ class App extends React.Component {
         filteredTeasers: [],
         receivedTeasers: [],
         renderedTeasers: [],
-        allKeywords: []
+        allKeywords: [],
+        urlHash: ''
     };
 
     componentDidMount() {
         this.evaluateUrlParam();
-
     }
 
     evaluateUrlParam = () => {
@@ -27,8 +27,16 @@ class App extends React.Component {
         let apiDate = {};
         let indexedDbKey = '';
         // check if param is a valid idb key at all
-        if(window.location.search.match(/\?\d{4}_\d{1}/g)) {
-            indexedDbKey = window.location.search.replace(/\?/g, '');
+        if(location.search.match(/\?\d{4}_\d{1}/g)) {
+            this.setState(
+                { 
+                    urlHash: location.hash, 
+                    loading: true
+                },
+                // reassign actual hash after rendering is finished
+                () => location.hash = ''
+            );
+            indexedDbKey = location.search.replace(/\?/g, '');
             apiDate.year = indexedDbKey.split('_')[0];
             apiDate.month = indexedDbKey.split('_')[1];
             this.checkIndexedDbKey(indexedDbKey, apiDate);
@@ -137,7 +145,7 @@ class App extends React.Component {
     }
 
     render () {
-        const { loading, renderedTeasers, allKeywords, filterKeyword } = this.state;
+        const { loading, renderedTeasers, allKeywords, filterKeyword, urlHash } = this.state;
         return (
             <div>
                 <Header
@@ -147,7 +155,7 @@ class App extends React.Component {
                     clearFilter={this.clearFilter}
                     filterKeyword={filterKeyword}
                 />
-                <main className="main">
+                <main className="main" ref={this.setMainRef}>
                     {loading && ('Loading, please wait ...') || renderedTeasers.length === 0 && <h1 className="main__heading">Browse New York Times&#39; Article Teasers back to 1851</h1> || renderedTeasers.length > 0 &&
                     renderedTeasers.map((teaser, index) => {
                         const { _id, headline, pub_date, snippet, keywordValues, web_url } = teaser;
@@ -161,6 +169,7 @@ class App extends React.Component {
                                 keywords={keywordValues}
                                 link={web_url}
                                 filterTeasers={this.filterTeasers}
+                                urlHash={urlHash}
                             />
                         );
                     })

@@ -3,6 +3,15 @@ import PropTypes from 'prop-types';
 
 class Teaser extends React.Component {
 
+    componentDidMount() {
+        const { urlHash, id } = this.props;
+        // reassign urlHash if actual Teaser matching
+        // browser history is rendered
+        if ( urlHash === `#${id}`) {
+            location.hash = urlHash;
+        }
+    }
+
     renderKeywords = (keyword, index) => {
         return (
             <button
@@ -64,7 +73,8 @@ Teaser.propTypes =  {
     snippet: PropTypes.string,
     keywords: PropTypes.array,
     link: PropTypes.string,
-    filterTeasers: PropTypes.func
+    filterTeasers: PropTypes.func,
+    urlHash: PropTypes.string
 };
 
 export default Teaser;
