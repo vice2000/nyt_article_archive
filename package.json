@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "cross-env NODE_ENV=development webpack --mode development & node index.js",
+    "dev": "cross-env NODE_ENV=development webpack --mode development & cross-env NODE_ENV=development node index.js",
     "build": "cross-env NODE_ENV=production webpack -p --mode production",
     "lint:scss": "csscomb src/scss && stylelint src/scss --fix"
   },
@@ -22,7 +22,8 @@
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react-dom": "^16.8.3",
+    "react-router-dom": "^5.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

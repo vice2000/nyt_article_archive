@@ -28,7 +28,6 @@ class Header extends React.Component {
                         alt="nytimes api logo"
                     />
                 </a>
-                {}
                 <Datepicker expanded={expanded} getData={getData} />
                 <KeywordSelect 
                     keywords={allKeywords}
