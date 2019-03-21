@@ -17,7 +17,7 @@ if (useLocalData) {
     options.path = '/local_data'; 
 }
 
-exports.callApi = (request, on_result) => {
+exports.getApiData = (request, on_result) => {
 
     if (!useLocalData) {
         options.path = `/svc/archive/v1/${request.body.year}/${request.body.month}.json?api-key=${api_key}`;

@@ -1,18 +1,16 @@
 require('dotenv').config();
 const express = require('express');
-const router = require('./router');
+const { resolve } = require('path');
 const http = require('http');
 const fs = require('fs');
-const app = express();
 const bodyParser = require('body-parser');
-const { callApi } = require('./api/callApi.js');
+const router = require('./router');
+const { getApiData } = require('./api');
+const app = express();
 const port = process.env.PORT || 3000;
 const isDevelopment = process.env.NODE_ENV === 'development';
 
-// eslint-disable-next-line no-console
-console.log('isDevelopment', isDevelopment);
-
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(resolve('public')));
 
 app.get('/*', router);
 
@@ -23,7 +21,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/', (req, res) => {
-    callApi(req, (result, status_code) => {
+    getApiData(req, (result, status_code) => {
         res.status(status_code).send(result);
     });
 });

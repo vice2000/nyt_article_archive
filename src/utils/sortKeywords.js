@@ -1,10 +1,10 @@
 import orderBy from 'lodash/orderBy';
 
 export default function sortKeywords(array) {
-    let unique = {};
-    let arrayToSort = [];
+    const unique = {};
+    const arrayToSort = [];
+    const keywords = [];
     let ordered = [];
-    let keywords = [];
 
     array.forEach( i => {
         if(!unique[i]) {

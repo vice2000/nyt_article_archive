@@ -5,7 +5,7 @@
  */
 
 export default function dedupeTeasers(teasers) {
-    let unique = {};
+    const unique = {};
     teasers.forEach(teaser => {
         if(!unique[teaser._id]) {
             unique[teaser._id] = teaser ;

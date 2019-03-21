@@ -26,15 +26,14 @@ nyt_article_archive.git && npm install
 ```
 
 - Sign up for a free [Developer Account](https://developer.nytimes.com) with the New York Times and obtain an API key
-- Optional: Create SSL-Key & Certificate for your local environment, see [https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/) if you want to request your local dummy data via SSL 
+- Create SSL-Key & Certificate for your local environment, see [https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/) to retrieve local dummy data through SSL. All of the SSL config here is just needed to make SSL requests work with local dummy data hence Node's `https` module is used to submit the actual API request.
 - Create an .env file in the project's root directory:
 ```
 NYT_ARCHIVE_API_KEY=YOUR_KEY
-SSLKEY=/path/to/your.key
-SSLCERT=/path/to/your.key.crt
-USE_LOCAL_DATA=true # set to 'false' to call the actual Live API
-NODE_TLS_REJECT_UNAUTHORIZED = "0"
-ENVIRONMENT=development
+SSLKEY=/path/to/your.key #local SSL-Key
+SSLCERT=/path/to/your.key.crt #local SSL-Certifificate
+USE_LOCAL_DATA=true #request local dummy data instead of the actual live API
+NODE_TLS_REJECT_UNAUTHORIZED = "0" #necessary to avoid errors with the local SSL cert
 ```
 #### Running Locally
 

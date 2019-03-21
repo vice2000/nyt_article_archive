@@ -40,7 +40,7 @@ class ArticleArchive extends React.Component {
 
     evaluateUrlParam = () => {
         // infer date for request body from url param
-        let apiDate = {};
+        const apiDate = {};
         let indexedDbKey = '';
         // check if param is a valid idb key at all
         if(location.search.match(/\?\d{4}_\d{1}/g)) {
@@ -83,7 +83,7 @@ class ArticleArchive extends React.Component {
     }
 
     checkIndexedDbKey = async (indexedDbKey, date) => {
-        let now = new Date().getTime();
+        const now = new Date().getTime();
         try {
             const result = await localforage.getItem(indexedDbKey);
             // check if IDB entry is older than one hour
@@ -111,11 +111,11 @@ class ArticleArchive extends React.Component {
     receiveTeasers = (data, date) => {
         const items = dedupeTeasers(data.response.docs);
         const createdAt = new Date().getTime();
-        let teasers = [];
+        const teasers = [];
 
         items.map(item => {
             const { _id, headline, web_url, snippet, pub_date, keywords } = item;
-            let keywordValues = [];
+            const keywordValues = [];
             for(let kw of keywords) { keywordValues.push(kw.value); }
             teasers.push(
                 { _id, headline, web_url, snippet, pub_date, keywordValues }
@@ -136,7 +136,7 @@ class ArticleArchive extends React.Component {
     }
 
     extractKeywords (teasers) {
-        let allKeywords = [];
+        const allKeywords = [];
         teasers.map(teaser => {
             for (let value of teaser.keywordValues) { 
                 allKeywords.push(value);
@@ -146,7 +146,7 @@ class ArticleArchive extends React.Component {
     }
 
     filterTeasers = (keyword, clickedRef = '') => {
-        let matchingTeasers = [];
+        const matchingTeasers = [];
         this.setState(
             {
                 filterKeyword: keyword,

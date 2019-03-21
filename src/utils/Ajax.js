@@ -1,7 +1,7 @@
 class Ajax {
     static post (url, body) {
         return new Promise((resolve, reject) => {
-            let xhr = new XMLHttpRequest();
+            const xhr = new XMLHttpRequest();
             xhr.open('POST', url);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.onload = () => {

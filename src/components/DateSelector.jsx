@@ -7,18 +7,18 @@ class DateSelector extends React.Component {
     state = {}
 
     set_max_date() {
-        let today = new Date();
-        let year = today.getFullYear();
-        let month = today.getMonth()+1;
-        let mth_leading_zero = month < 10 ? `0${month}` : `${month}`;
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = today.getMonth()+1;
+        const mth_leading_zero = month < 10 ? `0${month}` : `${month}`;
         return (`${year}-${mth_leading_zero}`);
     }
 
     handleChange = (e) => {
 
-        let date = {};
-        let raw_date = e.currentTarget.value;
-        let date_str = raw_date.split('-');
+        const date = {};
+        const raw_date = e.currentTarget.value;
+        const date_str = raw_date.split('-');
 
         date.year =  date_str[0];
         date.month = String(parseInt(date_str[1], 10)); // strip leading zero
