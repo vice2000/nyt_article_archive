@@ -3,7 +3,7 @@ This poject was mainly created to check out different browser technologies and e
 It uses the New York Time's [Archive API](https://developer.nytimes.com/docs/archive-product/1/overview).
 
 ### [Live Demo](https://desolate-reaches-55572.herokuapp.com/)
-The Demo ist hosted on a [Heroku Free Dyno](https://devcenter.heroku.com/articles/free-dyno-hours), so it might be sleeping upon the first request. The browser tab needs to be refreshed a second time in this case. 
+The Demo lives on a [Heroku Free Dyno](https://devcenter.heroku.com/articles/free-dyno-hours) which is likely to be idling upon the initial http-request and therefore might take up to 30 seconds to spool up. Refresh the browser tab if you still get an http-error.
 
 ![Iphone Demo](./screenshot.gif)
 
