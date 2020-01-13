@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Teaser extends React.Component {
+class Teaser extends React.PureComponent {
 
     componentDidMount() {
         const { urlHash, id } = this.props;
@@ -44,7 +44,7 @@ class Teaser extends React.Component {
         const searchDate = `${date.getFullYear()}_${date.getMonth() + 1}`;
 
         return(
-            <article 
+            <article
                 id={id}
                 className="teaser"
                 ref={this.setClickedRef}

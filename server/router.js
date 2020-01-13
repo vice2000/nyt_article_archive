@@ -10,7 +10,7 @@ if (isDevelopment) {
     });
 }
 
-router.get('/*', function(req, res) {
+router.get('/*', (req, res) => {
     res.redirect('/');
 });
 

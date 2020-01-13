@@ -1,14 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import ArticleArchive from './ArticleArchive';
+import KeywordChart from './KeywordChart';
 
 
-class App extends React.Component {
+class App extends React.PureComponent {
     render () {
         return (
-            <Router>
-                <Route path="/" exact component={ArticleArchive} />
-            </Router>
+            <Switch>
+                <Switch>
+                    <Route exact path="/" component={ArticleArchive} />
+                    <Route path="/chart" component={KeywordChart} />
+                </Switch>
+            </Switch>
         );
     }
 }

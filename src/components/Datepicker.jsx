@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DateSelector from './DateSelector';
 
-class Datepicker extends React.Component {
+class Datepicker extends React.PureComponent {
 
     state = {};
 

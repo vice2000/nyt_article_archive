@@ -6,7 +6,7 @@ import Teaser from './Teaser';
 import localforage from 'localforage';
 import Header from './Header';
 
-class ArticleArchive extends React.Component {
+class ArticleArchive extends React.PureComponent {
 
     state = {
         loading: false,
@@ -45,8 +45,8 @@ class ArticleArchive extends React.Component {
         // check if param is a valid idb key at all
         if(location.search.match(/\?\d{4}_\d{1}/g)) {
             this.setState(
-                { 
-                    urlHash: location.hash, 
+                {
+                    urlHash: location.hash,
                     loading: true
                 },
                 // reassign actual hash after rendering is finished
@@ -94,7 +94,7 @@ class ArticleArchive extends React.Component {
                         receivedTeasers: result.teasers,
                         renderedTeasers: result.teasers,
                         allKeywords: result.allKeywords,
-                        loading: false 
+                        loading: false
                     }
                 );
             } else {
@@ -138,7 +138,7 @@ class ArticleArchive extends React.Component {
     extractKeywords (teasers) {
         const allKeywords = [];
         teasers.map(teaser => {
-            for (let value of teaser.keywordValues) { 
+            for (let value of teaser.keywordValues) {
                 allKeywords.push(value);
             }
         });

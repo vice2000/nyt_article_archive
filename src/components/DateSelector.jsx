@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 
-class DateSelector extends React.Component {
+class DateSelector extends React.PureComponent {
 
     state = {}
 
@@ -22,7 +22,7 @@ class DateSelector extends React.Component {
 
         date.year =  date_str[0];
         date.month = String(parseInt(date_str[1], 10)); // strip leading zero
-        
+
         this.props.date(date);
 
     }
@@ -46,7 +46,7 @@ class DateSelector extends React.Component {
             </fieldset>
         );
     }
-    
+
 }
 
 DateSelector.propTypes = {

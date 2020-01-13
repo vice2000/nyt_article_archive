@@ -1,24 +1,22 @@
 import orderBy from 'lodash/orderBy';
 
 export default function sortKeywords(array) {
-    const unique = {};
+    const countedKeywords = {};
     const arrayToSort = [];
     const keywords = [];
     let ordered = [];
 
     array.forEach( i => {
-        if(!unique[i]) {
-            unique[i] = 1 ;
-        } else if (unique[i]) {
-            unique[i] += 1;
+        if(!countedKeywords[i]) {
+            countedKeywords[i] = 1 ;
+        } else if (countedKeywords[i]) {
+            countedKeywords[i] += 1;
         }
     });
 
-    for (let key in unique) {
-        const value = unique[key];
-        // pass the count as string literal in the actual keyword 
-        // to be displayed in the select options
-        arrayToSort.push({ keyword: `${key} (${value})`, count: value });
+    for (let kw in countedKeywords) {
+        const count = countedKeywords[kw];
+        arrayToSort.push({ keyword: { kw, count }, count });
     }
 
     ordered = orderBy(arrayToSort, ['count', 'keyword'], ['desc', 'asc']);

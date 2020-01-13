@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-class KeywordSelect extends React.Component {
+class KeywordSelect extends React.PureComponent {
 
     state = {
         initialValue: 'Select Keyword',
@@ -30,8 +29,8 @@ class KeywordSelect extends React.Component {
         const modifierClass = value || filterKeyword ? '' : 'header__input--inactive';
         const expandedClass = expanded ? '' : 'header__keywordfilter--hidden';
         return (
-            <form 
-                className={'header__keywordfilter ' + expandedClass} 
+            <form
+                className={'header__keywordfilter ' + expandedClass}
                 onSubmit={this.handleSubmit}
             >
                 <fieldset className="header__fieldset">
@@ -48,7 +47,16 @@ class KeywordSelect extends React.Component {
                         >
                             {filterKeyword || initialValue}
                         </option>
-                        {keywords.map(keyword => <option key={keyword} name={keyword} value={keyword}>{keyword}</option>)} 
+                        {
+                            keywords.map(keyword => {
+                                const { kw, count } = keyword;
+                                return (
+                                    <option key={kw} name={kw} value={kw}>
+                                        {`${kw} (${count})`}
+                                    </option>
+                                );
+                            })
+                        }
                     </select>
                 </fieldset>
                 <button className="header__button" type="submit">Clear Filter</button>

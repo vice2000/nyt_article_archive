@@ -9,13 +9,13 @@
   color: $color-text-bright;
   border-bottom: rem(1px) solid rgba(255, 255, 255, 0.5);
   background-color: rgba($color-skyblue, 0.95);
+  z-index: 2;
 
   @include font-smoothing;
 
   @include respond-min($breakpoint-tablet + rem(1px)) {
     align-items: center;
     flex-direction: row;
-    justify-content: space-between;
   }
 
   &__datepicker,
@@ -44,10 +44,31 @@
     }
   }
 
-  &__logo-link,
-  &__logo-image {
+  &__link-logo,
+  &__image-logo {
     height: rem(30px);
     margin-right: rem(32px);
+  }
+
+  &__link-chart,
+  &__link-home {
+    margin-left: auto;
+  }
+
+  &__image-chart,
+  &__image-home {
+    width: rem(30px);
+    height: rem(30px);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &__image-chart {
+    background-image: url('/img/bar_chart-24px.svg');
+  }
+
+  &__image-home {
+    background-image: url('/img/home-24px.svg');
   }
 
   &__fieldset {
@@ -127,16 +148,39 @@
     }
   }
 
-  &__menu-toggle {
+  &__navigation {
     position: absolute;
     top: rem(8px);
     right: rem(24px);
-    display: inline-block;
+    display: flex;
+    align-items: center;
+  }
+
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: rem(720px);
+
+    @include respond-min($breakpoint-tablet) {
+      flex-direction: row;
+    }
+
+    @include respond-min(rem(1045px)) {
+      max-width: rem(820px);
+    }
+
+    @include respond-min(rem(1250px)) {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__menu-toggle {
     width: rem(32px);
     height: rem(32px);
-    color: $color-white;
+    margin-left: rem(12px);
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 
     @include respond-min($breakpoint-tablet + rem(1px)) {
       display: none;
