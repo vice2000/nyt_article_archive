@@ -4,6 +4,7 @@
   top: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100vw;
   padding: rem(8px);
   color: $color-text-bright;
@@ -14,7 +15,6 @@
   @include font-smoothing;
 
   @include respond-min($breakpoint-tablet + rem(1px)) {
-    align-items: center;
     flex-direction: row;
   }
 
@@ -48,6 +48,11 @@
   &__image-logo {
     height: rem(30px);
     margin-right: rem(32px);
+    align-self: flex-start;
+
+    @include respond-min($breakpoint-tablet) {
+      align-self: unset;
+    }
   }
 
   &__link-chart,
@@ -92,6 +97,10 @@
       margin-left: rem(12px);
     }
 
+    @include respond-min($breakpoint-desktop-large) {
+      margin-bottom: 0;
+    }
+
     &--stretched {
       // equalize 4px padding added by input[type="month"]
       width: rem(208px);
@@ -115,7 +124,6 @@
     font-size: rem(14px);
     font-weight: $font-weight-semibold;
     display: block;
-    margin-left: rem(2px);
 
     @include respond-min($breakpoint-tablet) {
       display: inline-block;
@@ -153,16 +161,17 @@
     top: rem(8px);
     right: rem(24px);
     display: flex;
-    align-items: center;
   }
 
   &__form-container {
     display: flex;
     flex-direction: column;
     max-width: rem(720px);
+    align-self: flex-start;
 
     @include respond-min($breakpoint-tablet) {
       flex-direction: row;
+      align-self: unset;
     }
 
     @include respond-min(rem(1045px)) {
