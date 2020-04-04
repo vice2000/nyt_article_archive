@@ -1,10 +1,10 @@
 .main {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   margin-top: rem(48px);
   padding: rem(8px);
-  position: relative;
-  z-index: 1;
 
   @include respond-min($breakpoint-tablet) {
     margin-top: rem(88px);
