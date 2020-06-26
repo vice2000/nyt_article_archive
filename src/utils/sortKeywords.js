@@ -1,12 +1,12 @@
 import orderBy from 'lodash/orderBy';
 
-export default function sortKeywords(array) {
+export default function sortKeywords(allKeywords) {
     const countedKeywords = {};
     const arrayToSort = [];
     const keywords = [];
     let ordered = [];
 
-    array.forEach( i => {
+    allKeywords.forEach( i => {
         if(!countedKeywords[i]) {
             countedKeywords[i] = 1 ;
         } else if (countedKeywords[i]) {
