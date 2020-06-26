@@ -10,8 +10,7 @@ class KeywordSelect extends React.PureComponent {
 
     onChange = (e) => {
         // replace count passed as string literal
-        // in the actual keyword
-        const value = e.target.value.replace(/(\s\(\d+\))$/,'');
+        const value = e.target.value.replace(/(\s\[\d+\])$/g,'');
         this.props.filterTeasers(value);
         this.setState({ value });
     }
@@ -52,7 +51,7 @@ class KeywordSelect extends React.PureComponent {
                                 const { kw, count } = keyword;
                                 return (
                                     <option key={kw} name={kw} value={kw}>
-                                        {`${kw} (${count})`}
+                                        {`${kw} [${count}]`}
                                     </option>
                                 );
                             })
