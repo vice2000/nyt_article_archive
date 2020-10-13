@@ -28,10 +28,10 @@
   &::after {
     flex-basis: 45%;
     margin: 0 auto;
-    content: '';
+    content: "";
   }
 }
 
-[data-expanded='true'] + .main {
-  margin-top: rem(170px);
+[data-expanded="true"] + .main {
+  margin-top: rem(190px);
 }
