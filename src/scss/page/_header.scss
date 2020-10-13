@@ -69,11 +69,11 @@
   }
 
   &__image-chart {
-    background-image: url('/img/bar_chart-24px.svg');
+    background-image: url("/img/bar_chart-24px.svg");
   }
 
   &__image-home {
-    background-image: url('/img/home-24px.svg');
+    background-image: url("/img/home-24px.svg");
   }
 
   &__fieldset {
@@ -150,6 +150,10 @@
       margin-left: rem(12px);
     }
 
+    @media (min-width: rem(320px)) and (max-width: $breakpoint-tablet - rem(1px)) {
+      margin-top: rem(10px);
+    }
+
     @include on-interaction {
       color: $color-white;
       background-color: lighten($color-skyblue, 10%);
@@ -195,12 +199,12 @@
       display: none;
     }
 
-    &[aria-expanded=false] {
-      background-image: url('/img/icon_menu.svg');
+    &[aria-expanded="false"] {
+      background-image: url("/img/icon_menu.svg");
     }
 
-    &[aria-expanded=true] {
-      background-image: url('/img/icon_close.svg');
+    &[aria-expanded="true"] {
+      background-image: url("/img/icon_close.svg");
     }
   }
 }
